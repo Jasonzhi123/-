@@ -1,0 +1,86 @@
+.mid {
+  min-height: 1280rpx;
+  color: #fff;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200rpx;
+  padding: 0rpx 30rpx;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.top .left {
+  width: 150rpx;
+  height: 150rpx;
+  flex: none;
+}
+
+.top .content {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  margin-left: 40rpx;
+  color: #fff;
+}
+
+.top .content .title {
+  line-height: 80rpx;
+}
+
+.top .content .name {
+  line-height: 60rpx;
+}
+
+.top .right {
+  width: 100rpx;
+  height: 100rpx;
+  flex: none;
+}
+
+.lyric {
+  text-align: center;
+  display: block;
+}
+.dish{
+  padding: 50rpx;
+  display: flex;
+  justify-content: center;
+}
+.dish image{
+  width: 500rpx;
+  height: 500rpx;
+  border-radius: 50%;
+}
+
+.rotate{
+  animation: roll 3s linear infinite;
+}
+@keyframes roll{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+.foot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:40rpx;
+}
+
+ .foot .bar{
+   flex: auto;
+  height: 6rpx;
+  background: #f4f4f4;
+  margin:0rpx 20rpx;
+} 
+.foot .bar .line{
+  width: 10%;
+  height: 100%;
+  background: #31c27c;
+}

@@ -1,0 +1,40 @@
+<view class="mid" style="background: #999">
+  <view class="top">
+    <image src="{{imgPath}}" class="left"></image>
+    <view class="content">
+      <text class="title">{{songlist.songname}}</text>
+      <text class="name">{{songlist.singer[0].name}}</text>
+    </view>
+    <image bindtap="playmusic" src="{{imgpath?'../../images/icon-play.png':'../../images/icon-pause.png'}}" class="right"></image>
+  </view>
+  <swiper indicator-dots="{{true}}" indicator-color="#fff"  indicator-active-color="red" style="height:800rpx; margin:50rpx 0rpx;" >
+    <swiper-item>
+      <view class="song">
+        <scroll-view style="height:800rpx; margin:50rpx 0rpx;" class="" scroll-y>
+          <view class="lyric" wx:key="unique" wx:for="{{lyricText}}">{{item}}</view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="">
+        <scroll-view style="height:800rpx; margin:50rpx 0rpx;" class="" scroll-y>
+        <view class="dish">
+        <image src="{{imgPath}}" class="{{imgpath?'':'rotate'}}"></image>
+        </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view class="foot">
+    <view class="start">
+      {{current_minute
+      <10? '0': ''}}{{current_minute}}:{{currentPosition%60<10? '0': ''}}{{currentPosition%60}} </view>
+
+        <view class="bar" bindtouchmove="movebar">
+          <view class="line" style="width:{{width+'%'}}"></view>
+        </view>
+        <view class="end">{{current_second
+          <10? '0': ''}}{{current_second}}:{{duration%60<10? '0': ''}}{{duration%60}}</view>
+        </view>
+    </view>

@@ -1,0 +1,24 @@
+<view class="container" style="background:#{{bgcolor}}" >
+  <image class="top" src="{{pic_album}}"></image>
+  <view class="wrap">
+    <view class="left">
+      <text>{{ListName}}</text>
+      <text>{{update_time}} 更新</text>
+    </view>
+    <image class="right" src="../../images/icon-play.png"></image>
+  </view>
+
+  <view class="list" data-play="{{index}}" bindtap="autoplaymusic" wx:key="unique" wx:for="{{songlist}}">
+    <view class="number">{{index+1}}</view>
+    <view class="content">
+      <text class="songname">{{item.data.songname}}</text>
+      <view class="lists">
+        <text class="songer">{{item.data.singer[0].name}}</text>
+        <text class="album">{{item.data.albumname}}</text>
+        <text class="album1">{{item.data.albumdesc}}</text>
+      </view>
+    </view>
+  </view>
+  
+  
+</view>

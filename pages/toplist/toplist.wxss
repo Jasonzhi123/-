@@ -1,0 +1,78 @@
+.container .top {
+  width: 100%;
+  min-height: 700rpx;
+}
+
+.container .wrap {
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0), #000);
+  color: #fff;
+  padding: 0rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: -100rpx;
+  height: 110rpx;
+}
+
+.container .wrap .left {
+  display: flex;
+  flex-direction: column;
+  line-height: 50rpx;
+}
+
+.container .wrap .left text:nth-child(1) {
+  font-size: 50rpx;
+}
+
+.container .wrap .right {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.container .list {
+  margin-top: -10rpx;
+  display: flex;
+  color: #fff;
+}
+
+.container .list + .list {
+  margin-top: 20rpx;
+}
+
+.container .list .number {
+  padding: 40rpx;
+}
+
+.container .list .content {
+  width: 100%;
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.6);
+}
+
+.container .list .content .songname {
+  font-size: 40rpx;
+  line-height: 70rpx;
+}
+
+.container .list .content .lists {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.7);
+   /* overflow: hidden;  */
+}
+
+.container .list .content .lists .songer {
+  margin-right: 20rpx;
+white-space: nowrap;  
+}
+.container .list .content .lists .album{
+  white-space: nowrap;
+}
+.container .list .content .lists .album1 {
+  width: 230rpx;
+  flex: none;
+   overflow: hidden; 
+   white-space: nowrap; 
+  text-overflow: ellipsis;
+}

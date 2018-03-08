@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/splash/splash",
+    "pages/comment/comment",
+    "pages/setting/setting",
+    "pages/toplist/toplist",
+    "pages/playmusic/playmusic",
+    "pages/music/index",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#019DD6",
+    "navigationBarTitleText": "忆初之谈",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#fff",
+    "borderStyle": "white",
+    "backgroundColor": "#019DD6",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/fav.png",
+        "selectedIconPath": "images/fav.png"
+      },
+      {
+        "pagePath": "pages/music/index",
+        "text": "更多",
+        "iconPath": "images/fav.png",
+        "selectedIconPath": "images/fav.png"
+      }
+    ]
+  }
+}
