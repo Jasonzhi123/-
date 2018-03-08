@@ -21,7 +21,17 @@ Page({
     console.log(songlist)
     // var imgpath = app.globalData.imgpath;
     // console.log(imgpath)
-
+    wx.setNavigationBarTitle({
+      title: '歌曲：' + songlist.albumname
+    })
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: '#333',
+      animation: {
+        duration: 400,
+        timingFunc: 'easeIn'
+      }
+    })
     this.setData({
       songlist: songlist,
       imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'

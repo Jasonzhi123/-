@@ -2,7 +2,6 @@ function slider(callback) {
   wx.request({
     url: 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg', //仅为示例，并非真实的接口地址
     data: {
-
       g_tk: 5381,
       uin: 0,
       format: 'json',
@@ -17,7 +16,6 @@ function slider(callback) {
       'content-type': 'application/json'
     },
     success: function (res) {
-
       callback(res.data)
     }
   })
@@ -26,7 +24,6 @@ function topList(callback) {
   wx.request({
     url: 'https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg', //仅为示例，并非真实的接口地址
     data: {
-
       g_tk: 5381,
       uin: 0,
       format: 'json',
@@ -41,7 +38,6 @@ function topList(callback) {
       'content-type': 'application/json'
     },
     success: function (res) {
-
       callback(res.data)
     }
   })
@@ -68,7 +64,6 @@ function search(callback) {
       if (res.statusCode == 200) {
         //成功了
         callback(res.data);
-
       }
     }
   })
@@ -100,7 +95,6 @@ function toplist_detailed(id, callback) {
       if (res.statusCode == 200) {
         //成功了
         callback(res.data);
-        console.log(res.data)
       }
     }
   })
