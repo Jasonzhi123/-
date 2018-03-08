@@ -1,5 +1,5 @@
 var common = require("../../data/data.js");
-var app=getApp();
+var app = getApp();
 console.log(app)
 Page({
 
@@ -8,11 +8,11 @@ Page({
    */
   data: {
     navList: ["推荐", "排行榜", "搜索"],
-    navcur: 2,
-    searchId:1,
-    searchshow:true,
-    searchvalue:"搜索",
-    musicshow:false
+    navcur: 1,
+    searchId: 1,
+    searchshow: true,
+    searchvalue: "搜索",
+    musicshow: false
   },
 
   /**
@@ -20,7 +20,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    
+
     // 推荐页面
     common.slider(function (data) {
       that.setData({
@@ -31,36 +31,34 @@ Page({
     });
 
     // 排行榜
-    common.topList(function(data){
+    common.topList(function (data) {
       that.setData({
         topList: data.data.topList
       })
     });
 
     // 搜索
-    common.search(function(data){
+    common.search(function (data) {
       that.setData({
-        search: data.data.hotkey.slice(11,19),
-        searchTitle:data.data.special_key
+        search: data.data.hotkey.slice(11, 19),
+        searchTitle: data.data.special_key
       })
     });
 
-    
-  //  播放器
-    setInterval(function(){      
-      if (app.globalData.songlist){
+    //  播放器
+    setInterval(function () {
+      if (app.globalData.songlist) {
         if (songlist) return;
         var songlist = app.globalData.songlist;
-        
-         that.setData({
-         songname: app.globalData.songlist.songname,
-         songername: songlist.singer[0].name,
-         imgpath: app.globalData.imgpath,
-        imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg',
-        musicshow:true
-      });
-      }    
-    },5000);
+        that.setData({
+          songname: app.globalData.songlist.songname,
+          songername: songlist.singer[0].name,
+          imgpath: app.globalData.imgpath,
+          imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg',
+          musicshow: true
+        });
+      }
+    }, 5000);
   },
 
   //导航栏点击事件
@@ -71,38 +69,34 @@ Page({
     })
   },
 
-  openmusicradiostation:function(ev){
+  openmusicradiostation: function (ev) {
     console.log(ev);
     console.log(this)
   },
 
   //排行榜上打开跳转音乐列表
-  opentoplist:function(ev){
+  opentoplist: function (ev) {
     var id = ev.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../toplist/toplist?id='+id
+      url: '../toplist/toplist?id=' + id
     })
   },
 
-  
+
   //输入框当键盘输入时，触发input事件
-  bindKeywordInput:function(ev){    
+  bindKeywordInput: function (ev) {
     this.setData({
       searchkey: ev.detail.value,
-      searchshow:false,
-      
-    })    
+      searchshow: false,
+    })
   },
 
   // 点击搜索框时，把输入的数据传到api中
-  searchBtn: function(){
-    var that=this;
-    var val=this.data.searchkey;  //输入的关键字
-    
-    var searchId = this.data.searchId; 
-    
-    common.searchresult(val, searchId,function(data){
-      
+  searchBtn: function () {
+    var that = this;
+    var val = this.data.searchkey;  //输入的关键字
+    var searchId = this.data.searchId;
+    common.searchresult(val, searchId, function (data) {
       that.setData({
         searchlist: data.data.song.list,
         searchshow: false,
@@ -111,36 +105,39 @@ Page({
   },
 
   // 下拉加载
-  scrolltolower:function(ev){
-    var that=this;
+  scrolltolower: function (ev) {
+    var that = this;
     clearTimeout(this.data.timer)
-    this.data.timer=setTimeout(function(){
+    this.data.timer = setTimeout(function () {
       that.setData({
-        searchId: that.data.searchId+1
+        searchId: that.data.searchId + 1
       })
-    },100)
+    }, 100)
     this.searchBtn();
   },
 
   // 打开音乐
-  openmusic:function(ev){
+  openmusic: function (ev) {
     var index = ev.currentTarget.dataset.searchid;
     app.globalData.songlist = this.data.searchlist[index]
     wx.navigateTo({
-      url: 'playmusic/playmusic'
+      url: '../playmusic/playmusic'
     })
   },
 
   // 切换音乐
-  Togglesong:function(ev){
+  Togglesong: function (ev) {
     var off = !this.data.imgpath;
-    app.globalData.imgpath=off;
+    app.globalData.imgpath = off;
     this.setData({
       imgpath: off
     })
+    if (imgpath){
+console.log(33)
+    }
   },
   // 打开音乐页面
-  openmusicpage:function(){
+  openmusicpage: function () {
     wx.navigateTo({
       url: 'playmusic/playmusic'
     })

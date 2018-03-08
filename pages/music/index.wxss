@@ -11,8 +11,8 @@
   line-height: 80rpx;
 }
 .nav text.cur{
-  color: #31c27c;
-  border-bottom: 4rpx solid #31c27c;
+  color: #019DD6;
+  border-bottom: 4rpx solid #019DD6;
 }
 
 .page01 .bannar{
@@ -71,7 +71,7 @@
 
 .page02 .list{
   display: flex;
-  margin: 20rpx;
+  margin: 25rpx 20rpx 20rpx;
   background: #fff;
 }
 .page02 .list image{
@@ -88,7 +88,7 @@
   overflow: hidden;
 }
 .page02 .list .name .title{
-  font-size: 36rpx;
+  font-size: 32rpx;
 }
 .page02 .list .name .song{
   overflow: hidden;

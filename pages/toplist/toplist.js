@@ -23,13 +23,12 @@ Page({
   onLoad: function (options) {
     var that = this;
     var index = options.id;
-   
-
+    console.log(options)
     common.toplist_detailed(index, function (data) {
       var color = data.color.toString(16);
       if (color == 0) {
         color = "000";
-      };   
+      };
       that.setData({
         songlist: data.songlist,
         update_time: data.update_time,
@@ -37,7 +36,19 @@ Page({
         pic_album: data.topinfo.pic_album,
         bgcolor: color
       })
+      wx.setNavigationBarTitle({
+        title: that.data.ListName
+      })
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: color,
+        animation: {
+          duration: 400,
+          timingFunc: 'easeIn'
+        }
+      })
     })
+    
   },
   // 跳转到播放页面
   autoplaymusic: function (ev) {

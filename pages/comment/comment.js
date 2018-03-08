@@ -12,6 +12,7 @@ Page({
         toastMsg: ''
     },
     onLoad: function(options) {
+      console.log(options)
         var storyId = options['id'];
         var longCommentCount = parseInt(options['lcount']);
         var shortCommentCount = parseInt(options['scount']);

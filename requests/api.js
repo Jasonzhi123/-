@@ -10,7 +10,7 @@ const API_STORY = API_V4 + '/story';
  * @returns {string}
  */
 function getLatestNews() {
-    return API_NEWS + '/latest';
+  return API_NEWS + '/latest';
 }
 
 /**
@@ -18,8 +18,8 @@ function getLatestNews() {
  * @param {int} newsId 日报id
  * @returns {string}
  */
-function getNewsDetail( newsId ) {
-    return API_NEWS + '/' + newsId;
+function getNewsDetail(newsId) {
+  return API_NEWS + '/' + newsId;
 }
 
 /**
@@ -28,8 +28,8 @@ function getNewsDetail( newsId ) {
  * @param {string} date 日期 yyyMMdd
  * @returns {string}
  */
-function getBeforeNews( date ) {
-    return 'http://news.at.zhihu.com/api/4/news/before/' + date;
+function getBeforeNews(date) {
+  return 'http://news.at.zhihu.com/api/4/news/before/' + date;
 }
 
 /**
@@ -37,8 +37,8 @@ function getBeforeNews( date ) {
  * @param {int} newsId 日报id
  * @returns {string}
  */
-function getStoryExtraInfo( storyId ) {
-    return API_STORY + '-extra/' + storyId;
+function getStoryExtraInfo(storyId) {
+  return API_STORY + '-extra/' + storyId;
 }
 
 /**
@@ -46,8 +46,8 @@ function getStoryExtraInfo( storyId ) {
  * @param {int} storyId 新闻idid
  * @returns {string}
  */
-function getStoryLongComments( storyId ) {
-    return API_STORY + '/' + storyId + '/long-comments';
+function getStoryLongComments(storyId) {
+  return API_STORY + '/' + storyId + '/long-comments';
 }
 
 /**
@@ -55,24 +55,24 @@ function getStoryLongComments( storyId ) {
  * @param {int} storyId 新闻idid
  * @returns {string}
  */
-function getStorytoryShortComments( storyId ) {
-    return API_STORY + '/' + storyId + '/short-comments';
+function getStorytoryShortComments(storyId) {
+  return API_STORY + '/' + storyId + '/short-comments';
 }
 
 function getTheme() {
-    return API_V4 + '/themes';
+  return API_V4 + '/themes';
 }
 
-function getThemeStories( themeId ) {
-    return API_V4 + '/theme/' + themeId;
+function getThemeStories(themeId) {
+  return API_V4 + '/theme/' + themeId;
 }
 
-function getStoryLongComments( storyId ) {
-    return API_STORY + '/' + storyId + '/long-comments';
+function getStoryLongComments(storyId) {
+  return API_STORY + '/' + storyId + '/long-comments';
 }
 
-function getStoryShortComments( storyId ) {
-    return API_STORY + '/' + storyId + '/short-comments';
+function getStoryShortComments(storyId) {
+  return API_STORY + '/' + storyId + '/short-comments';
 }
 
 /**
@@ -80,18 +80,20 @@ function getStoryShortComments( storyId ) {
  * @param {string} size 图片尺寸 格式：width*height
  * @return {string}
  */
-function getSplashCover( size ) {
-    return API_V4 + "/start-image/" + size;
+function getSplashCover(size) {
+  console.log(size)
+  console.log(API_V4 + "/start-image/")
+  return API_V4 + "/start-image/" + size;
 }
 
 module.exports = {
-    getLatestNews: getLatestNews,
-    getNewsDetail: getNewsDetail,
-    getBeforeNews: getBeforeNews,
-    getTheme: getTheme,
-    getStoryExtraInfo: getStoryExtraInfo,
-    getThemeStories: getThemeStories,
-    getStoryShortComments: getStoryShortComments,
-    getStoryLongComments: getStoryLongComments,
-    getSplashCover: getSplashCover
+  getLatestNews: getLatestNews,
+  getNewsDetail: getNewsDetail,
+  getBeforeNews: getBeforeNews,
+  getTheme: getTheme,
+  getStoryExtraInfo: getStoryExtraInfo,
+  getThemeStories: getThemeStories,
+  getStoryShortComments: getStoryShortComments,
+  getStoryLongComments: getStoryLongComments,
+  getSplashCover: getSplashCover
 };

@@ -76,6 +76,7 @@ Page({
         }
     },
     toCommentPage: function(e) {
+      console.log(this.data.extraInfo.data)
         var storyId = e.currentTarget.dataset.id;
         var longCommentCount = this.data.extraInfo ? this.data.extraInfo.data.long_comments : 0; //长评数目
         var shortCommentCount = this.data.extraInfo ? this.data.extraInfo.data.short_comments : 0; //短评数目
