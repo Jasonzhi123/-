@@ -95,6 +95,7 @@ Page({
   autoplaymusic() {
     var that = this;
     var songmid = this.data.songlist.songmid;
+    wx.setStorageSync("songmid", songmid)
     if (this.data.imgpath == false) {
       wx.playBackgroundAudio({
         dataUrl: 'http://ws.stream.qqmusic.qq.com/C100' + songmid + '.m4a?fromtag=38'

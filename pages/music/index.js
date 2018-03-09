@@ -132,14 +132,25 @@ Page({
     this.setData({
       imgpath: off
     })
-    if (imgpath){
-console.log(33)
+    var songmid = wx.getStorageSync('songmid')
+    if (this.data.imgpath == false) {
+      console.log(songmid)
+      wx.playBackgroundAudio({
+        dataUrl: 'http://ws.stream.qqmusic.qq.com/C100' + songmid + '.m4a?fromtag=38'
+      })
+    } else {
+      wx.pauseBackgroundAudio()
     }
+    app.globalData.imgpath = this.data.imgpath;
+//     if (imgpath){
+// console.log(33)
+//     }
+    // console.log(app)
   },
   // 打开音乐页面
   openmusicpage: function () {
     wx.navigateTo({
-      url: 'playmusic/playmusic'
+      url: '../playmusic/playmusic'
     })
   }
 })
