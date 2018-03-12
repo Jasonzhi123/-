@@ -29,9 +29,9 @@
       },
       {
         "pagePath": "pages/music/index",
-        "text": "更多",
-        "iconPath": "images/fav.png",
-        "selectedIconPath": "images/fav.png"
+        "text": "忆初音乐",
+        "iconPath": "images/music-on.png",
+        "selectedIconPath": "images/music.png"
       }
     ]
   }

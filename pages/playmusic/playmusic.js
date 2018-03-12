@@ -59,7 +59,7 @@ Page({
       this.data.timer = setInterval(function () {
         wx.getBackgroundAudioPlayerState({
           success: function (res) {
-            console.log(res)
+            // console.log(res)
             that.setData({
               currentPosition: res.currentPosition, //当前时间
               duration: res.duration, //总时间
