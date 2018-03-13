@@ -7,12 +7,15 @@
     "pages/toplist/toplist",
     "pages/playmusic/playmusic",
     "pages/music/index",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/more/more"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#019DD6",
     "navigationBarTitleText": "忆初之谈",
+    "backgroundColor": "#eeeeee",
+    "enablePullDownRefresh": false,
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -31,6 +34,12 @@
         "pagePath": "pages/music/index",
         "text": "忆初音乐",
         "iconPath": "images/music-on.png",
+        "selectedIconPath": "images/music.png"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "text": "更多",
+        "iconPath": "images/more.png",
         "selectedIconPath": "images/music.png"
       }
     ]
