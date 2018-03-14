@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/splash/splash",
+    "pages/index/index",
+   
     "pages/comment/comment",
     "pages/setting/setting",
     "pages/toplist/toplist",

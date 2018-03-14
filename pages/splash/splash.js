@@ -24,16 +24,13 @@ Page({
     });
   },
   onReady: function () {
-    var _this = this;
-    var size = this.data.screenWidth + '*' + this.data.screenHeight;
-    requests.getSplashCover(size, (res) => {
-      console.log(res);
-      res.data.img = res.data.img.replace("pic1", "pic4");
-      res.data.img = res.data.img.replace("pic2", "pic4");
-      _this.setData({ splash: res.data });
-    }, null, () => {
-      toIndexPage.call(_this);
-    })
+    setTimeout(function () {
+      console.log(333)
+      wx.reLaunch({
+        url: '../index/index',
+      })
+    }, 2000)
+
   },
   onShow: function () {
 
