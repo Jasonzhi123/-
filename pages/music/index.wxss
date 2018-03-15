@@ -79,6 +79,7 @@
   height: 200rpx;
   flex: none;
   align-self: center;
+  border-radius: 20rpx;
 }
 .page02 .list .name{
   margin: 5px 30rpx;

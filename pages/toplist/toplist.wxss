@@ -37,7 +37,7 @@
 }
 
 .container .list + .list {
-  margin-top: 20rpx;
+  padding-top: 20rpx;
 }
 
 .container .list .number {
@@ -45,13 +45,18 @@
 }
 
 .container .list .content {
-  width: 100%;
+  width: 80%;
   border-bottom: 2rpx solid rgba(255, 255, 255, 0.6);
 }
 
 .container .list .content .songname {
   font-size: 40rpx;
+  width: 100%;
   line-height: 70rpx;
+   overflow: hidden; 
+   white-space: nowrap; 
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .container .list .content .lists {
@@ -64,10 +69,17 @@
 
 .container .list .content .lists .songer {
   margin-right: 20rpx;
-white-space: nowrap;  
+overflow: hidden; 
+   white-space: nowrap; 
+  text-overflow: ellipsis;
+display: inline-block;
 }
 .container .list .content .lists .album{
-  white-space: nowrap;
+overflow: hidden; 
+   white-space: nowrap; 
+  text-overflow: ellipsis;
+  width: 100rpx;
+  display: inline-block;
 }
 .container .list .content .lists .album1 {
   width: 230rpx;
@@ -75,4 +87,6 @@ white-space: nowrap;
    overflow: hidden; 
    white-space: nowrap; 
   text-overflow: ellipsis;
+  display: inline-block;
+  
 }

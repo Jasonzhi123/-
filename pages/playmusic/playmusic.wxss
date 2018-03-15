@@ -32,6 +32,7 @@
 
 .top .content .name {
   line-height: 60rpx;
+  font-size: 16px;
 }
 
 .top .right {

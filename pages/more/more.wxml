@@ -1,2 +1,3 @@
-<!--pages/more/more.wxml-->
-<text>pages/more/more.wxml</text>
+<view class='more'>
+更多
+</view>
