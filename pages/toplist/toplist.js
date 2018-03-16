@@ -36,9 +36,11 @@ Page({
         pic_album: data.topinfo.pic_album,
         bgcolor: color
       })
+      // 设置导航栏标题
       wx.setNavigationBarTitle({
         title: that.data.ListName
       })
+      // 设置导航栏颜色
       wx.setNavigationBarColor({
         frontColor: '#ffffff',
         backgroundColor: color,

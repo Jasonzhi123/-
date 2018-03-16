@@ -78,7 +78,7 @@ display: inline-block;
 overflow: hidden; 
    white-space: nowrap; 
   text-overflow: ellipsis;
-  width: 100rpx;
+  width: 210rpx;
   display: inline-block;
 }
 .container .list .content .lists .album1 {

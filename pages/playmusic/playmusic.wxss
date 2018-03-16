@@ -16,6 +16,7 @@
   width: 150rpx;
   height: 150rpx;
   flex: none;
+  border-radius: 10rpx;
 }
 
 .top .content {
