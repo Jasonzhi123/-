@@ -24,9 +24,11 @@
     <text>热歌</text>
     <view class="content ">
       <view class="one two" wx:key="{{unique}}" wx:for="{{songList}}">
+       <view bindtap='openHotSong'>
         <image src="{{item.picUrl}}"></image>
         <text>{{item.songListDesc}}</text>
         <text>{{item.songListAuthor}}</text>
+       </view>
       </view>
     </view>
   </view>

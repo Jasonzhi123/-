@@ -8,7 +8,7 @@ Page({
    */
   data: {
     navList: ["推荐", "排行榜", "搜索"],
-    navcur: 1,
+    navcur: 0,
     searchId: 1,
     searchshow: true,
     searchvalue: "搜索",
@@ -23,6 +23,7 @@ Page({
 
     // 推荐页面
     common.slider(function (data) {
+      console.log(data);
       that.setData({
         slider: data.data.slider,
         radioList: data.data.radioList,
@@ -72,6 +73,9 @@ Page({
   openmusicradiostation: function (ev) {
     console.log(ev);
     console.log(this)
+    common.radioStation(function (data) {
+      
+    });
   },
 
   //排行榜上打开跳转音乐列表
@@ -142,15 +146,19 @@ Page({
       wx.pauseBackgroundAudio()
     }
     app.globalData.imgpath = this.data.imgpath;
-//     if (imgpath){
-// console.log(33)
-//     }
-    // console.log(app)
   },
   // 打开音乐页面
   openmusicpage: function () {
     wx.navigateTo({
       url: '../playmusic/playmusic'
+    })
+  },
+  /**
+   * 打开热歌
+   * */ 
+  openHotSong:function(e){
+    common.hotSong( function (data) {
+      
     })
   }
 })
