@@ -8,11 +8,11 @@ Page({
    */
   data: {
     navList: ["推荐", "排行榜", "搜索"],
-    navcur: 0,
-    searchId: 1,
+    navcur: 2,
     searchshow: true,
     searchvalue: "搜索",
-    musicshow: false
+    musicshow: false,
+    isLoadSearchData: true
   },
 
   /**
@@ -74,7 +74,7 @@ Page({
     console.log(ev);
     console.log(this)
     common.radioStation(function (data) {
-      
+
     });
   },
 
@@ -99,27 +99,46 @@ Page({
   searchBtn: function () {
     var that = this;
     var val = this.data.searchkey;  //输入的关键字
-    var searchId = this.data.searchId;
+    var searchId =1;
+    this.setData({
+      val,
+      searchId,
+      isLoadSearchData:true
+    })
+    this.getSearchData(val, searchId)
+  },
+
+  // 上拉加载
+  scrolltolower: function (ev) {
+    var that = this;
+    var searchId= that.data.searchId + 7;
+    var val = this.data.val;
+    that.setData({
+      searchId ,
+      isLoadSearchData: false
+    })
+    this.getSearchData(val, searchId);
+  },
+  /**
+   * 获取搜索数据
+   * */
+  getSearchData: function (val, searchId) {
+    var that=this;
+    var isLoadSearchData = this.data.isLoadSearchData;
     common.searchresult(val, searchId, function (data) {
+      var searchlist;
+      if (data.data.song.list.length == 0){
+        that.setData({
+          noLoadData:true
+        })
+      }
+      isLoadSearchData ? searchlist = data.data.song.list : searchlist = that.data.searchlist.concat(data.data.song.list)
       that.setData({
-        searchlist: data.data.song.list,
+        searchlist: searchlist,
         searchshow: false,
       })
     })
   },
-
-  // 下拉加载
-  scrolltolower: function (ev) {
-    var that = this;
-    clearTimeout(this.data.timer)
-    this.data.timer = setTimeout(function () {
-      that.setData({
-        searchId: that.data.searchId + 1
-      })
-    }, 100)
-    this.searchBtn();
-  },
-
   // 打开音乐
   openmusic: function (ev) {
     var index = ev.currentTarget.dataset.searchid;
@@ -155,10 +174,20 @@ Page({
   },
   /**
    * 打开热歌
-   * */ 
-  openHotSong:function(e){
-    common.hotSong( function (data) {
-      
+   * */
+  openHotSong: function (e) {
+    common.hotSong(function (data) {
+
+    })
+  },
+  onShow: function () {
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth
+        })
+      }
     })
   }
 })

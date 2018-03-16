@@ -122,11 +122,13 @@
   background: #fff;
   border-radius: 25rpx;
   font-size: 32rpx;
+  border:1px solid #aaa;
 }
 .page03 .search .button{
   height: 80rpx;
   margin-left: 10rpx;
   border-radius: 5rpx;
+  background: transparent;
 }
 .page03 .search_content{
   height: 400rpx;

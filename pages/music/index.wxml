@@ -24,11 +24,11 @@
     <text>热歌</text>
     <view class="content ">
       <view class="one two" wx:key="{{unique}}" wx:for="{{songList}}">
-       <view bindtap='openHotSong'>
-        <image src="{{item.picUrl}}"></image>
-        <text>{{item.songListDesc}}</text>
-        <text>{{item.songListAuthor}}</text>
-       </view>
+        <view bindtap='openHotSong'>
+          <image src="{{item.picUrl}}"></image>
+          <text>{{item.songListDesc}}</text>
+          <text>{{item.songListAuthor}}</text>
+        </view>
       </view>
     </view>
   </view>
@@ -55,7 +55,7 @@
 <view class="page03" hidden="{{navcur!=2}}">
   <view class="search">
     <input type="search" placeholder="搜索歌曲" bindinput="bindKeywordInput" />
-    <button bindtap="searchBtn">{{searchvalue}}</button>
+    <button class='button' bindtap="searchBtn">{{searchvalue}}</button>
   </view>
 
   <view class="search_content" wx:if="{{searchshow}}">
@@ -67,7 +67,7 @@
   </view>
 
   <view class="result" wx:if="{{!searchshow}}">
-    <scroll-view style="height: 900rpx;" bindscrolltolower="scrolltolower" scroll-y="true">
+    <scroll-view style="height: {{windowHeight}}px;" bindscrolltolower="scrolltolower" scroll-y="true">
       <view class="item" wx:for="{{searchlist}}" wx:key="{{unique}}" data-searchid="{{index}}" bindtap="openmusic">
         <image src="../../images/icon-music.png"></image>
         <view class="item-one">
@@ -75,6 +75,7 @@
           <text class="songaname">{{item.singer[0].name}}</text>
         </view>
       </view>
+      <view wx:if="{{noLoadData}}">我是有底线的</view>
     </scroll-view>
   </view>
 </view>
