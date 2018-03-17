@@ -99,6 +99,14 @@ Page({
   searchBtn: function () {
     var that = this;
     var val = this.data.searchkey;  //输入的关键字
+    if (val == undefined || val == ''){
+      wx.showToast({
+        title: '不能为空',
+        icon: 'success',
+        duration: 1000
+      })
+      return;
+    }
     var searchId =1;
     this.setData({
       val,
