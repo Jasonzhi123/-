@@ -110,5 +110,5 @@
 </loading>
 <modal class="modal" hidden="{{modalMsgHidden}}" no-cancel bindconfirm="modalMsgHiddenEvent">
   <view style="text-align:center;color:#000;font-weight:bold"> Designed by Fish119. </view>
-  <view style="text-align:center;">https://github.com/fish119</view>
+  <!-- <view style="text-align:center;">https://github.com/fish119</view> -->
 </modal>

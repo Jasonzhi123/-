@@ -12,6 +12,7 @@ Page({
     searchshow: true,
     searchvalue: "搜索",
     musicshow: false,
+    
     isLoadSearchData: true
   },
 
