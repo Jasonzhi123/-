@@ -12,7 +12,7 @@ Page({
     searchshow: true,
     searchvalue: "搜索",
     musicshow: false,
-    
+
     isLoadSearchData: true
   },
 
@@ -41,6 +41,7 @@ Page({
 
     // 搜索
     common.search(function (data) {
+      console.log(data)
       that.setData({
         search: data.data.hotkey.slice(11, 19),
         searchTitle: data.data.special_key
@@ -151,6 +152,7 @@ Page({
   // 打开音乐
   openmusic: function (ev) {
     var index = ev.currentTarget.dataset.searchid;
+    console.log(index)
     app.globalData.songlist = this.data.searchlist[index]
     wx.navigateTo({
       url: '../playmusic/playmusic'
