@@ -19,8 +19,7 @@ Page({
     var that = this;
     var songlist = app.globalData.songlist;
     console.log(songlist)
-    // var imgpath = app.globalData.imgpath;
-    // console.log(imgpath)
+    //设置导航栏 
     wx.setNavigationBarTitle({
       title: '歌曲：' + songlist.albumname
     })
@@ -40,19 +39,19 @@ Page({
     this.autoplaymusic()
 
     // 音乐歌词
-    // common.getLyric(songlist.songid, function (data) {
-    //   console.log(data)
-    //   var lyric = data.showapi_res_body.lyric;
-    //   var re = /[^\u4e00-\u9fa5]/g; //找到中文
-    //   var str = lyric.replace(re, "<br>");  //换行符
-    //   var str1 = str.replace(/<br>\s*(<br>\s*)+/g, '  ');  //去掉多个br
-    //   var arr = str1.replace(/<br>+/g, " ").split("  ");  //转化成数组
-    //   var arr1 = arr.slice(4, arr.length)  //截取数组
+    common.getLyric(songlist.songid, function (data) {
+      console.log(data)
+      var lyric = data.showapi_res_body.lyric;
+      var re = /[^\u4e00-\u9fa5]/g; //找到中文
+      var str = lyric.replace(re, "<br>");  //换行符
+      var str1 = str.replace(/<br>\s*(<br>\s*)+/g, '  ');  //去掉多个br
+      var arr = str1.replace(/<br>+/g, " ").split("  ");  //转化成数组
+      var arr1 = arr.slice(4, arr.length)  //截取数组
 
-    //   that.setData({
-    //     lyricText: arr1
-    //   })
-    // }),
+      that.setData({
+        lyricText: arr1
+      })
+    }),
 
     // 播放时长
     clearInterval(that.data.timer),

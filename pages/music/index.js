@@ -12,7 +12,6 @@ Page({
     searchshow: true,
     searchvalue: "搜索",
     musicshow: false,
-
     isLoadSearchData: true
   },
 
@@ -91,17 +90,24 @@ Page({
 
   //输入框当键盘输入时，触发input事件
   bindKeywordInput: function (ev) {
+    console.log(ev)
     this.setData({
-      searchkey: ev.detail.value,
-      searchshow: false,
+      searchKey: ev.detail.value,  //关键字
+      searchshow: false,  //隐藏热门搜索
     })
+    if (ev.detail.value == '' || ev.detail.value == undefined){
+      this.setData({
+        searchshow: true, //显示热门搜索
+        searchlist:[]      //清空搜索数组
+      })
+    }
   },
 
   // 点击搜索框时，把输入的数据传到api中
   searchBtn: function () {
     var that = this;
-    var val = this.data.searchkey;  //输入的关键字
-    if (val == undefined || val == ''){
+    var val = this.data.searchKey;  //输入的关键字
+    if (val == undefined || val == '') {
       wx.showToast({
         title: '不能为空',
         icon: 'success',
@@ -109,37 +115,37 @@ Page({
       })
       return;
     }
-    var searchId =1;
+    var searchId = 1;
     this.setData({
       val,
       searchId,
-      isLoadSearchData:true
+      isLoadSearchData: true
     })
-    this.getSearchData(val, searchId)
+    this.getSearchData(val, searchId)   //获取搜索数据
   },
 
   // 上拉加载
   scrolltolower: function (ev) {
     var that = this;
-    var searchId= that.data.searchId + 7;
+    var searchId = that.data.searchId + 7;
     var val = this.data.val;
     that.setData({
-      searchId ,
+      searchId,
       isLoadSearchData: false
     })
-    this.getSearchData(val, searchId);
+    this.getSearchData(val, searchId);    //获取搜索数据
   },
   /**
    * 获取搜索数据
    * */
   getSearchData: function (val, searchId) {
-    var that=this;
+    var that = this;
     var isLoadSearchData = this.data.isLoadSearchData;
     common.searchresult(val, searchId, function (data) {
       var searchlist;
-      if (data.data.song.list.length == 0){
+      if (data.data.song.list.length == 0) {
         that.setData({
-          noLoadData:true
+          noLoadData: true
         })
       }
       isLoadSearchData ? searchlist = data.data.song.list : searchlist = that.data.searchlist.concat(data.data.song.list)
@@ -199,6 +205,18 @@ Page({
           windowWidth: res.windowWidth
         })
       }
+    })
+  },
+  /**
+   * 点击关键字
+   * */
+  toSearchList: function (e) {
+    console.log(e)
+    var searchKey = e.currentTarget.dataset.searchkey;
+    var searchId = 1;
+    this.getSearchData(searchKey, searchId)
+    this.setData({
+      searchKey: searchKey
     })
   }
 })

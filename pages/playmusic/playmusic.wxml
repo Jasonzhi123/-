@@ -8,7 +8,7 @@
     <image bindtap="playmusic" src="{{imgpath?'../../images/icon-play.png':'../../images/icon-pause.png'}}" class="right"></image>
   </view>
 
-  <swiper indicator-dots="{{true}}" indicator-color="#fff" indicator-active-color="red" style="height:800rpx; margin:50rpx 0rpx;">
+  <swiper indicator-dots="{{true}}" indicator-color="#fff" indicator-active-color="blue" style="height:800rpx; margin:50rpx 0rpx;">
    
     <swiper-item>
       <view class="">

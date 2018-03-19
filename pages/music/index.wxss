@@ -247,6 +247,13 @@
     transform: rotate(360deg)
   }
 }
+.footer{
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  width: 100%;
+  color:#999;
+}
 
 
 
