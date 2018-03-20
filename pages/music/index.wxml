@@ -66,6 +66,13 @@
     </view>
   </view>
 
+  <view class="search_content" wx:if="{{searchshow}}">
+    <view class="title">历史搜索</view>
+    <view class="name">
+      
+    </view>
+  </view>
+
   <view class="result" wx:if="{{!searchshow}}">
     <scroll-view style="height: {{windowHeight}}px;" bindscrolltolower="scrolltolower" scroll-y="true">
       <view class="item" wx:for="{{searchlist}}" wx:key="{{unique}}" data-searchid="{{index}}" bindtap="openmusic">

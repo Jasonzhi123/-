@@ -39,19 +39,19 @@ Page({
     this.autoplaymusic()
 
     // 音乐歌词
-    common.getLyric(songlist.songid, function (data) {
-      console.log(data)
-      var lyric = data.showapi_res_body.lyric;
-      var re = /[^\u4e00-\u9fa5]/g; //找到中文
-      var str = lyric.replace(re, "<br>");  //换行符
-      var str1 = str.replace(/<br>\s*(<br>\s*)+/g, '  ');  //去掉多个br
-      var arr = str1.replace(/<br>+/g, " ").split("  ");  //转化成数组
-      var arr1 = arr.slice(4, arr.length)  //截取数组
+    // common.getLyric(songlist.songid, function (data) {
+    //   console.log(data)
+    //   var lyric = data.showapi_res_body.lyric;
+    //   var re = /[^\u4e00-\u9fa5]/g; //找到中文
+    //   var str = lyric.replace(re, "<br>");  //换行符
+    //   var str1 = str.replace(/<br>\s*(<br>\s*)+/g, '  ');  //去掉多个br
+    //   var arr = str1.replace(/<br>+/g, " ").split("  ");  //转化成数组
+    //   var arr1 = arr.slice(4, arr.length)  //截取数组
 
-      that.setData({
-        lyricText: arr1
-      })
-    }),
+    //   that.setData({
+    //     lyricText: arr1
+    //   })
+    // }),
 
     // 播放时长
     clearInterval(that.data.timer),
@@ -82,7 +82,6 @@ Page({
 
   //暂停音乐
   playmusic: function (ev) {
-    // clearInterval(this.data.timer)
     var off = !this.data.imgpath
     this.setData({
       imgpath: off
@@ -111,7 +110,7 @@ Page({
     //2. 获取 bar 的原点  X=ev.touches[0].clientX - bar.offsetLeft
     //3.页面初始化后马上获取 bar宽度 = 屏幕的宽度 - bar.offsetLeft * 2
     //4.改变当前的时间  
-    //    公式：手指移动的距离 / bar的宽度 * 总时长
+    //  公式：手指移动的距离 / bar的宽度 * 总时长
     //5.调用接口 wx.seekBackgroundAudio  改变当前时长
 
     var that = this;
