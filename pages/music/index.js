@@ -12,7 +12,8 @@ Page({
     searchshow: true,
     searchvalue: "搜索",
     musicshow: false,
-    isLoadSearchData: true
+    isLoadSearchData: true,
+    searchHistory: wx.getStorageSync('searchHistory')
   },
 
   /**
@@ -94,11 +95,13 @@ Page({
     this.setData({
       searchKey: ev.detail.value,  //关键字
       searchshow: false,  //隐藏热门搜索
+    
     })
     if (ev.detail.value == '' || ev.detail.value == undefined){
       this.setData({
         searchshow: true, //显示热门搜索
-        searchlist:[]      //清空搜索数组
+        searchlist:[],      //清空搜索数组
+        historyListShow: true    //显示历史搜索
       })
     }
   },
@@ -115,11 +118,17 @@ Page({
       })
       return;
     }
+    var searchHistory = wx.getStorageSync('searchHistory') || [];
+    searchHistory.push(val);
+    console.log(searchHistory);
+    wx.setStorageSync('searchHistory', searchHistory)
     var searchId = 1;
     this.setData({
       val,
       searchId,
-      isLoadSearchData: true
+      isLoadSearchData: true,
+      searchHistory: searchHistory,
+      historyListShow:false   //隐藏历史搜索
     })
     this.getSearchData(val, searchId)   //获取搜索数据
   },
@@ -217,6 +226,36 @@ Page({
     this.getSearchData(searchKey, searchId)
     this.setData({
       searchKey: searchKey
+    })
+  },
+  /**
+   * 删除历史搜索单条
+   * */ 
+  deleteItem:function(e){
+    console.log(e)
+    var index = e.currentTarget.dataset.index;
+    var itemKey = e.currentTarget.dataset.itemkey;
+    var searchHistory = this.data.searchHistory;
+    var newSearchHistory = searchHistory.filter(item =>{
+      console.log(itemKey)
+      console.log(item)
+      return item != itemKey
+    })
+    wx.setStorageSync('searchHistory', newSearchHistory)
+    this.setData({
+      searchHistory: newSearchHistory
+    })
+  },
+  /**
+   * 删除所有历史搜索
+   * */ 
+  deleteAll:function(){
+    console.log(444)
+    wx.clearStorageSync('searchHistory');
+    wx.showToast({
+      title:"成功",
+      icon:'success',
+      duration:1000
     })
   }
 })

@@ -1,120 +1,129 @@
-.nav{
+.nav {
   display: flex;
   height: 80rpx;
   background: #fff;
-
 }
-.nav text{
+
+.nav text {
   /* display: block; */
   flex: 1;
   text-align: center;
   line-height: 80rpx;
 }
-.nav text.cur{
-  color: #019DD6;
-  border-bottom: 4rpx solid #019DD6;
+
+.nav text.cur {
+  color: #019dd6;
+  border-bottom: 4rpx solid #019dd6;
 }
 
-.page01 .bannar{
+.page01 .bannar {
   width: 100%;
 }
 
-
-.page01 .diantai,.page01 .hotsong {
+.page01 .diantai, .page01 .hotsong {
   margin: 40rpx;
 }
-.page01 .diantai .title,.page01 .hotsong{
-  line-height: 40rpx;
 
+.page01 .diantai .title, .page01 .hotsong {
+  line-height: 40rpx;
 }
- .content{
-   margin: 30rpx 0rpx; 
+
+.content {
+  margin: 30rpx 0rpx;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.content .one{
+
+.content .one {
   flex: 1;
- background: #fff;
+  background: #fff;
 }
 
-.content .one:nth-child(2n){
+.content .one:nth-child(2n) {
   margin-left: 20rpx;
 }
-.content .two{
+
+.content .two {
   margin-bottom: 20rpx;
 }
-.content .two text{
+
+.content .two text {
   width: 300rpx;
   display: block;
   flex: none;
   overflow: hidden;
-   white-space: nowrap;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
-.content .one image{
-     width: 100%; 
-     flex: none;
-     height: 250rpx;
 
+.content .one image {
+  width: 100%;
+  flex: none;
+  height: 250rpx;
 }
-.content .one text{
+
+.content .one text {
   line-height: 50rpx;
   display: block;
   font-size: 28rpx;
   text-align: center;
   overflow: hidden;
-   white-space: nowrap;
+  white-space: nowrap;
   text-overflow: ellipsis;
-  }
+}
 
-
-.page02 .list{
+.page02 .list {
   display: flex;
   margin: 25rpx 20rpx 20rpx;
   background: #fff;
 }
-.page02 .list image{
+
+.page02 .list image {
   width: 200rpx;
   height: 200rpx;
   flex: none;
   align-self: center;
   border-radius: 20rpx;
 }
-.page02 .list .name{
+
+.page02 .list .name {
   margin: 5px 30rpx;
   flex: auto;
   font-size: 28rpx;
   line-height: 45rpx;
   overflow: hidden;
 }
-.page02 .list .name .title{
+
+.page02 .list .name .title {
   font-size: 32rpx;
 }
-.page02 .list .name .song{
+
+.page02 .list .name .song {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #999;
 }
-.page02 .list .name .song .songname{
+
+.page02 .list .name .song .songname {
   margin: 0rpx 20rpx;
   color: #333;
 }
 
-.page02 .list .right{
+.page02 .list .right {
   width: 30rpx;
   align-self: center;
-  flex: none; 
+  flex: none;
 }
 
-
-.page03 .search{
+.page03 .search {
   display: flex;
-  margin: 20rpx ;
-  overflow: hidden
+  margin: 20rpx;
+  overflow: hidden;
 }
-.page03 .search input{
+
+.page03 .search input {
   flex: 6;
   padding: 0rpx 20rpx;
   height: 80rpx;
@@ -122,68 +131,72 @@
   background: #fff;
   border-radius: 25rpx;
   font-size: 32rpx;
-  border:1px solid #aaa;
+  border: 1px solid #aaa;
 }
-.page03 .search .button{
+
+.page03 .search .button {
   height: 80rpx;
   margin-left: 10rpx;
   border-radius: 5rpx;
   background: transparent;
 }
-.page03 .search_content{
+
+.page03 .search_content {
   height: 400rpx;
   background: #fff;
   padding: 30rpx;
-  overflow: hidden
-
+  overflow: hidden;
 }
 
-.page03 .search_content .name{
-  margin:40rpx 20rpx;
+.page03 .search_content .name {
+  margin: 40rpx 20rpx;
   display: flex;
-  flex-wrap:wrap; 
+  flex-wrap: wrap;
   justify-content: space-around;
+}
 
+.page03 .search_content .name text {
+  padding: 20rpx;
+  border: 2rpx solid #999;
+  margin: 10rpx;
+  border-radius: 25rpx;
+  font-size: 24rpx;
+  text-align: center;
 }
-.page03 .search_content .name text{
-    padding: 20rpx;
-    border: 2rpx solid #999;
-    margin: 10rpx;
-    border-radius: 25rpx;
-    font-size: 24rpx;
-    text-align: center;
-}
-.page03 .search_content .name text:nth-child(1){
+
+.page03 .search_content .name text:nth-child(1) {
   color: red;
   border-color: red;
   flex: auto;
-  
+}
 
+.page03 .result {
+  margin: 20rpx;
 }
-.page03 .result{
-    margin: 20rpx;
-}
-.page03 .result .item{
+
+.page03 .result .item {
   display: flex;
   height: 120rpx;
   background: #fff;
   align-items: center;
-  padding:0rpx 20rpx;
+  padding: 0rpx 20rpx;
   border-radius: 20rpx;
   margin-bottom: 20rpx;
 }
-.page03 .result .item image{
+
+.page03 .result .item image {
   width: 40rpx;
   height: 40rpx;
 }
-.page03 .result .item .item-one{
+
+.page03 .result .item .item-one {
   margin-left: 30rpx;
   display: flex;
   flex-direction: column;
- font-size: 28rpx;
- 
+  font-size: 28rpx;
 }
-.page03 .result .item .item-one .title{
+
+.page03 .result .item .item-one .title {
   font-size: 40rpx;
   line-height: 50rpx;
   width: 100%;
@@ -193,13 +206,13 @@
   text-overflow: ellipsis;
 }
 
-.page03 .result .item .item-one .songaname{
+.page03 .result .item .item-one .songaname {
   font-size: 28rpx;
   line-height: 40rpx;
   display: inline-block;
 }
 
-.music{
+.music {
   width: 100%;
   height: 150rpx;
   background: rgba(0, 0, 0, 0.7);
@@ -208,9 +221,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
-.music .left{
+
+.music .left {
   width: 100rpx;
   height: 100rpx;
   align-self: center;
@@ -218,50 +231,78 @@
   border-radius: 100%;
   margin-left: 20rpx;
 }
-.music .content{
+
+.music .content {
   display: flex;
   width: 100%;
   flex-direction: column;
   color: #fff;
   margin-left: 30rpx;
 }
-.music .content .title{
+
+.music .content .title {
   font-size: 50rpx;
   line-height: 60rpx;
 }
-.music .right{
+
+.music .right {
   width: 100rpx;
   height: 100rpx;
   flex: none;
   margin-right: 20rpx;
 }
-.rotate{
-  animation: roll 3s linear infinite; 
+
+.rotate {
+  animation: roll 3s linear infinite;
 }
 
-@keyframes roll{
-  from{
-    transform: rotate(0deg)
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
   }
-  to{
-    transform: rotate(360deg)
+
+  to {
+    transform: rotate(360deg);
   }
 }
-.footer{
+
+.footer {
   height: 100rpx;
   text-align: center;
   line-height: 100rpx;
   width: 100%;
-  color:#999;
+  color: #999;
 }
 
+.historyList {
+  margin: 5rpx 40rpx;
+}
 
+.historyList .title {
+  display: flex;
+  height: 150rpx;
+  /* line-height: 100rpx; */
+  color: #3a3a3a;
+  font-weight: bold;
+  font-size: 18px;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.historyList .title-right {
+  width: 50rpx;
+  height: 50rpx;
+}
+.historyList .historyList-item{
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px dashed #acacac;
+height: 100rpx;
 
+}
+.historyList .historyList-item .item-right{
+  width: 50rpx;
+  height: 50rpx;
 
-
-
-
-
-
-  
+}

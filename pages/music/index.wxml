@@ -66,10 +66,15 @@
     </view>
   </view>
 
-  <view class="search_content" wx:if="{{searchshow}}">
-    <view class="title">历史搜索</view>
-    <view class="name">
-      
+  <view class="historyList" >
+    <view class="title">
+      <view class='title-left'>历史搜索</view>
+      <image class='title-right' bindtap='deleteAll' src='../../images/delete.png'></image>
+    </view>
+
+    <view class="historyList-item" wx:for="{{searchHistory}}">
+      <view class='item-left'>{{item}}</view>
+      <image class='item-right' catchtap='deleteItem' data-itemKey='{{item}}'  data-index='{{index}}' src='../../images/delete-item.png'></image>      
     </view>
   </view>
 
@@ -79,7 +84,7 @@
         <image src="../../images/icon-music.png"></image>
         <view class="item-one">
           <text class="title">{{item.songname}}</text>
-          <text class="songaname">{{item.singer[0].name}}</text>
+          <text class="songaname" catchtap='deleteItem'>{{item.singer[0].name}}</text>
         </view>
       </view>
       <view wx:if="{{noLoadData}}" class='footer'>我是有底线的</view>
