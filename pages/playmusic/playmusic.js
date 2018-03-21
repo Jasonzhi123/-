@@ -16,13 +16,22 @@ Page({
   onLoad: function (options) {
     // 把数据从APP中取出来
     console.log(options)
+    var columnNumber = options.columnNumber;  //栏目序号
+
     var that = this;
-    var songlist = app.globalData.songlist;
+    var songlist = app.globalData.songlist;   //歌曲信息
     console.log(songlist)
     //设置导航栏 
     wx.setNavigationBarTitle({
       title: '歌曲：' + songlist.albumname
     })
+
+    common.toplist_detailed(columnNumber, function (data) {
+     console.log(data)
+     var columnSonglist = data.songlist;
+
+    })
+
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#333',
@@ -58,7 +67,6 @@ Page({
       this.data.timer = setInterval(function () {
         wx.getBackgroundAudioPlayerState({
           success: function (res) {
-            // console.log(res)
             that.setData({
               currentPosition: res.currentPosition, //当前时间
               duration: res.duration, //总时间

@@ -9,24 +9,30 @@
   </view>
 
   <swiper indicator-dots="{{true}}" indicator-color="#fff" indicator-active-color="blue" style="height:800rpx; margin:50rpx 0rpx;">
-   
     <swiper-item>
       <view class="">
-        <scroll-view style="height:800rpx; margin:50rpx 0rpx;" class="" scroll-y>
+        <scroll-view style="height:700rpx; margin:50rpx 0rpx;" class="" scroll-y>
           <view class="dish">
             <image src="{{imgPath}}" class="{{imgpath?'':'rotate'}}"></image>
           </view>
         </scroll-view>
       </view>
     </swiper-item>
-     <swiper-item>
+    <swiper-item>
+      <view class="">
+        <scroll-view style="height:700rpx; margin:50rpx 0rpx;" class="" scroll-y>
+          
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <!-- <swiper-item>
       <view class="song">
         <scroll-view style="height:800rpx; margin:50rpx 0rpx;" class="" scroll-y>
           <view class="lyric" wx:key="unique" wx:for="{{lyricText}}">{{item}}</view>
         </scroll-view>
       </view>
-    </swiper-item>
-  </swiper>
+    </swiper-item>-->
+   </swiper> 
 
   <view class="foot">
     <view class="start">{{current_minute

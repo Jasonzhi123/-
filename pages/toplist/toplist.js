@@ -8,7 +8,7 @@ Page({
   data: {
 
   },
-  
+
   dealColor: function (rgb) {
     if (!rgb) {
       return;
@@ -25,12 +25,14 @@ Page({
     var that = this;
     var index = options.id;
     console.log(options)
+
     common.toplist_detailed(index, function (data) {
       var color = data.color.toString(16);
       if (color == 0) {
         color = "000";
       };
       that.setData({
+        columnNumber: index,    //栏目序号
         songlist: data.songlist,
         update_time: data.update_time,
         ListName: data.topinfo.ListName,
@@ -55,11 +57,11 @@ Page({
   },
   // 跳转到播放页面
   autoplaymusic: function (ev) {
+    var columnNumber = this.data.columnNumber;
     var index = ev.currentTarget.dataset.play;  //获取ID
-    app.globalData.songlist = this.data.songlist[index].data, //把数据保存在APP中
-      wx.navigateTo({
-        url: '../playmusic/playmusic'
-      })
+    app.globalData.songlist = this.data.songlist[index].data //把数据保存在APP中
+    wx.navigateTo({
+      url: '../playmusic/playmusic?columnNumber=' + columnNumber
+    })
   },
-
 })

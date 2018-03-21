@@ -8,7 +8,7 @@ Page({
    */
   data: {
     navList: ["推荐", "排行榜", "搜索"],
-    navcur: 2,
+    navcur: 1,
     searchshow: true,
     searchvalue: "搜索",
     musicshow: false,
