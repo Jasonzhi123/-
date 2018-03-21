@@ -1,5 +1,6 @@
 var requests = require('../../requests/request.js');
 var utils = require('../../utils/util.js');
+
 Page({
   data: {
     id: '', //当前日报id

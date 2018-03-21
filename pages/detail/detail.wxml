@@ -43,9 +43,9 @@
                         </block>
                     </block>
                 </view>
-                <!-- <view class="discuss" wx:if="{{item.more && item.more != ''}}">
+                 <!-- <view class="discuss" wx:if="{{item.more && item.more != ''}}">
                     <navigator url="google.com">查看知乎讨论</navigator>
-                </view> -->
+                </view>  -->
             </view>
         </block>
     </view>
@@ -72,6 +72,7 @@
             </view>
         </view>
     </view>
+
     <modal class="modal" confirm-text="取消" no-cancel hidden="{{modalHidden}}" bindconfirm="hideModalEvent">
         <view class="share-list">
             <view class="item">
@@ -96,7 +97,9 @@
             </view>
         </view>
     </modal>
+
 </view>
+
 <loading hidden="{{!loading}}">
     加载中...
 </loading>

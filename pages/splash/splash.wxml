@@ -1,6 +1,6 @@
 <image src="https://image.ecs360.cn/yichu.jpg" class="cover" style="height:{{screenHeight}}px;width:{{screenWidth}}px"></image>
 <view class="mask">
-    <image class="logo" src="https://image.ecs360.cn/yichu.jpg"></image>
-    <text class="cover-author">忆初</text>
-    <text class="app-author">忆初之谈</text>
+  <image class="logo" src="https://image.ecs360.cn/yichu.jpg"></image>
+  <text class="cover-author">忆初</text>
+  <text class="app-author">忆初之谈</text>
 </view>

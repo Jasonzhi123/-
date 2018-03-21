@@ -8,6 +8,7 @@ Page({
   data: {
 
   },
+  
   dealColor: function (rgb) {
     if (!rgb) {
       return;
@@ -50,7 +51,7 @@ Page({
         }
       })
     })
-    
+
   },
   // 跳转到播放页面
   autoplaymusic: function (ev) {
