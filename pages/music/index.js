@@ -13,7 +13,8 @@ Page({
     searchvalue: "搜索",
     musicshow: false,
     isLoadSearchData: true,
-    searchHistory: wx.getStorageSync('searchHistory')
+    searchHistory: wx.getStorageSync('searchHistory'),
+    showSearchHistory: true
   },
 
   /**
@@ -95,13 +96,12 @@ Page({
     this.setData({
       searchKey: ev.detail.value,  //关键字
       searchshow: false,  //隐藏热门搜索
-    
     })
-    if (ev.detail.value == '' || ev.detail.value == undefined){
+    if (ev.detail.value == '' || ev.detail.value == undefined) {
       this.setData({
         searchshow: true, //显示热门搜索
-        searchlist:[],      //清空搜索数组
-        historyListShow: true    //显示历史搜索
+        searchlist: [],      //清空搜索数组
+        showSearchHistory: true    //显示历史搜索
       })
     }
   },
@@ -118,17 +118,21 @@ Page({
       })
       return;
     }
-    var searchHistory = wx.getStorageSync('searchHistory') || [];
-    searchHistory.push(val);
-    console.log(searchHistory);
+
+    var searchHistory = this.data.searchHistory || [];   //获取历史搜索记录
+    searchHistory.unshift(val);        //添加记录
+    if (searchHistory.length > 5) {    //自动删除最后一个
+      searchHistory.pop();
+    }
     wx.setStorageSync('searchHistory', searchHistory)
+
     var searchId = 1;
     this.setData({
       val,
       searchId,
       isLoadSearchData: true,
       searchHistory: searchHistory,
-      historyListShow:false   //隐藏历史搜索
+      showSearchHistory: false   //隐藏历史搜索
     })
     this.getSearchData(val, searchId)   //获取搜索数据
   },
@@ -220,25 +224,30 @@ Page({
    * 点击关键字
    * */
   toSearchList: function (e) {
-    console.log(e)
-    var searchKey = e.currentTarget.dataset.searchkey;
+    var searchKey = e.currentTarget.dataset.searchkey;    //关键字
     var searchId = 1;
-    this.getSearchData(searchKey, searchId)
+    var searchHistory = this.data.searchHistory || [];
+    console.log(searchHistory)
+    searchHistory.unshift(searchKey);
+    if (searchHistory.length > 5) {
+      searchHistory.pop();
+    }
+    wx.setStorageSync('searchHistory', searchHistory)
+    this.getSearchData(searchKey, searchId)      //获取搜索列表
+
     this.setData({
-      searchKey: searchKey
+      searchKey: searchKey,
+      searchHistory: searchHistory,
+      showSearchHistory: false
     })
   },
   /**
    * 删除历史搜索单条
-   * */ 
-  deleteItem:function(e){
-    console.log(e)
-    var index = e.currentTarget.dataset.index;
+   * */
+  deleteItem: function (e) {
     var itemKey = e.currentTarget.dataset.itemkey;
     var searchHistory = this.data.searchHistory;
-    var newSearchHistory = searchHistory.filter(item =>{
-      console.log(itemKey)
-      console.log(item)
+    var newSearchHistory = searchHistory.filter(item => {
       return item != itemKey
     })
     wx.setStorageSync('searchHistory', newSearchHistory)
@@ -248,14 +257,19 @@ Page({
   },
   /**
    * 删除所有历史搜索
-   * */ 
-  deleteAll:function(){
+   * */
+  deleteAll: function () {
     console.log(444)
     wx.clearStorageSync('searchHistory');
     wx.showToast({
-      title:"成功",
-      icon:'success',
-      duration:1000
+      title: "成功",
+      icon: 'success',
+      duration: 1000,
+      success: (res) => {
+        this.setData({
+          searchHistory: ''      //清空
+        })
+      }
     })
   }
 })

@@ -275,12 +275,12 @@
 }
 
 .historyList {
-  margin: 5rpx 40rpx;
+  margin: 5rpx 40rpx 100rpx;
 }
 
 .historyList .title {
   display: flex;
-  height: 150rpx;
+  height: 90rpx;
   /* line-height: 100rpx; */
   color: #3a3a3a;
   font-weight: bold;
@@ -304,5 +304,10 @@ height: 100rpx;
 .historyList .historyList-item .item-right{
   width: 50rpx;
   height: 50rpx;
+
+}
+.item-left{
+  color: #acacac;
+  font-weight: "幼圆";
 
 }

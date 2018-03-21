@@ -66,13 +66,13 @@
     </view>
   </view>
 
-  <view class="historyList" >
+  <view class="historyList" wx:if="{{searchHistory.length && showSearchHistory}}" >
     <view class="title">
       <view class='title-left'>历史搜索</view>
       <image class='title-right' bindtap='deleteAll' src='../../images/delete.png'></image>
     </view>
 
-    <view class="historyList-item" wx:for="{{searchHistory}}">
+    <view class="historyList-item" data-searchKey='{{item}}' bindtap='toSearchList'  wx:for="{{searchHistory}}">
       <view class='item-left'>{{item}}</view>
       <image class='item-right' catchtap='deleteItem' data-itemKey='{{item}}'  data-index='{{index}}' src='../../images/delete-item.png'></image>      
     </view>
