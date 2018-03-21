@@ -1,6 +1,5 @@
 var utils = require('../../utils/util.js');
 var requests = require('../../requests/request.js');
-
 var weekdayStr = ['日', ' 一', '二', '三', '四', '五', '六'];
 
 Page({
@@ -17,7 +16,6 @@ Page({
     loading: false,
     loadingMsg: '加载中...',
     pageShow: 'none',
-
     maskDisplay: 'none',
     slideHeight: 0,
     slideRight: 0,
@@ -40,6 +38,7 @@ Page({
   },
   onLoad: function (options) {
     var _this = this;
+
     wx.getSystemInfo({
       success: function (res) {
         _this.setData({
@@ -51,11 +50,13 @@ Page({
         });
       }
     });
+
     var app = getApp();
     app.getUserInfo((data) => {
       _this.setData({ avatarUrl: data.avatarUrl, nickName: data.nickName });
     });
   },
+
   onReady: function () {
     var date = utils.getCurrentData();
     this.setData({ currentDateStr: date.year + '.' + date.month + '.' + date.day + '　' + '星期' + weekdayStr[date.weekday] });
@@ -73,27 +74,30 @@ Page({
     }, null, () => {
       _this.setData({ loading: false });
     });
+
     //获取主题日报列表
     requests.getTheme((data) => {
       _this.setData({ themeData: data.data.others });
     }, null, () => { });
-  },
-  onShow: function () { },
-  onHide: function () {
 
   },
-  onUnload: function () {
-
-  },
-  //浮动球点击 侧栏展开
+  /**
+   * 浮动球点击 侧栏展开
+  */
   ballClickEvent: function () {
     slideUp.call(this);
   },
-  //遮罩点击  侧栏关闭
+
+  /**
+   * 遮罩点击  侧栏关闭
+   * */
   slideCloseEvent: function () {
     slideDown.call(this);
   },
-  //浮动球移动事件
+
+  /**
+   * 浮动球移动事件
+  */
   ballMoveEvent: function (e) {
     var touchs = e.touches[0];
     var pageX = touchs.pageX;
@@ -109,12 +113,18 @@ Page({
       ballRight: x
     });
   },
+
   authorShowEvent: function () {
     this.setData({ modalMsgHidden: false });
   },
+
   modalMsgHiddenEvent: function () {
     this.setData({ modalMsgHidden: true });
   },
+
+  /**
+   * 回首页
+   * */
   toHomePage: function () {
     if (this.data.themeId != 0) {
       var _this = this;
@@ -127,12 +137,16 @@ Page({
           pageShow: 'block'
         });
         slideDown.call(this);
-        wx.setNavigationBarTitle({ title: '知乎日报' }); //设置标题
+        wx.setNavigationBarTitle({ title: '忆初之谈' }); //设置标题
       }, null, () => {
         _this.setData({ loading: false });
       });
     }
   },
+
+  /**
+   * 选择相关栏目
+   * */ 
   toThemePage: function (e) {
     if (this.data.themeId != e.currentTarget.dataset.id) {
       var _this = this;
@@ -159,6 +173,9 @@ Page({
       });
     }
   },
+  /**
+   * 今日的文章列表
+   * */ 
   loadingMoreEvent: function (e) {
     if (this.data.loadingMore) return;
     var _this = this;
@@ -183,6 +200,10 @@ Page({
       _this.setData({ loadingMore: false });
     });
   },
+
+  /**
+   * 去收藏页
+   * */ 
   toCollectPage: function () {
     if (this.data.themeId != -1) {
       var _this = this;
@@ -196,17 +217,33 @@ Page({
       wx.setNavigationBarTitle({ title: '我的收藏' }); //设置标题
     }
   },
+
+  /**
+   * 到相应的文章页面
+   * */ 
   toDetailPage: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../detail/detail?id=' + id
     });
   },
+
+  /**
+   * 去设置页面
+   * */ 
   toSettingPage: function () {
     wx.navigateTo({
       url: '../setting/setting'
     });
-  }
+  },
+  
+  onShow: function () { },
+  onHide: function () {
+
+  },
+  onUnload: function () {
+
+  },
 });
 
 
