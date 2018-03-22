@@ -13,6 +13,7 @@ Page({
     pageShow: 'none',
     isCollect: false //是否被收藏
   },
+
   onLoad: function (options) {
     console.log(options)
     var id = options.id;
@@ -26,18 +27,11 @@ Page({
     }
     this.setData({ id: id, isTheme: isTheme });
   },
+
   onReady: function () {
     loadData.call(this);
   },
-  onShow: function () {
 
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
   collectOrNot: function () {
     var pageData = wx.getStorageSync('pageData') || [];
     if (this.data.isCollect) {
@@ -50,7 +44,11 @@ Page({
       }
     } else {
       var images = new Array(this.data.news.image);
-      var item = { id: this.data.id, title: this.data.news.title, images: images };
+      var item = {
+        id: this.data.id,
+        title: this.data.news.title,
+        images: images
+      };
       pageData.unshift(item);
       this.setData({ isCollect: true });
     }
@@ -58,17 +56,26 @@ Page({
       wx.setStorageSync('pageData', pageData);
     } catch (e) { }
   },
+
   showModalEvent: function () {
     this.setData({ modalHidden: false });
   },
+
   hideModalEvent: function () {
     this.setData({ modalHidden: true });
   },
-  //重新加载数据
+
+  /**
+   * 重新加载数据
+  */
   reloadEvent: function () {
     loadData.call(this);
     console.log('saa')
   },
+
+  /**
+   * 看大图
+   * */
   previewImgEvent: function (e) {
     var src = e.currentTarget.dataset.src;
     console.log(src);
@@ -78,6 +85,10 @@ Page({
       });
     }
   },
+
+  /**
+   * 去评论页
+   * */
   toCommentPage: function (e) {
     console.log(this.data.extraInfo.data)
     var storyId = e.currentTarget.dataset.id;
@@ -88,6 +99,7 @@ Page({
       url: '../comment/comment?lcount=' + longCommentCount + '&scount=' + shortCommentCount + '&id=' + storyId
     });
   }
+
 });
 
 
