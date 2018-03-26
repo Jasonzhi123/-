@@ -2,6 +2,7 @@
   <text wx:for="{{navList}}" class="{{navcur==index?'cur':''}}" wx:key="unique" data-navid="{{index}}" bindtap="navtab">{{item}}</text>
 </view>
 
+
 <!--推荐s  -->
 <view class="page01" hidden="{{navcur!=0}}">
   <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}">
