@@ -1,4 +1,6 @@
-<view class="mid" style="background: #999;height: {{windowHeight}}px; width:{{windowWidth}}px;">
+<view class="mid" style="background: #cacaca;height: {{windowHeight}}px; width:{{windowWidth}}px;">
+<!-- <view class="song-bg" style="background-image:url({{imgPath}})">
+  </view> -->
   <view class="top">
     <image src="{{imgPath}}" class="left"></image>
     <view class="content">
@@ -10,12 +12,15 @@
 
   <swiper indicator-dots="{{true}}" indicator-color="#fff" indicator-active-color="acacac" style="height:700rpx; margin:50rpx 0rpx;">
     <swiper-item>
+      <view class="control">
+        <image class="control-stick {{imgpath?'':'moveStick'}}" src='../../images/aag.png'></image>
+      </view>
       <view class="">
-        <!-- <scroll-view style="height:700rpx; margin:50rpx 0rpx;" class="" scroll-y> -->
-          <view class="dish">
-            <image class='dish-cd' src='../../images/play.png'></image>
-            <image src="{{imgPath}}" class=" dish-cd-logo {{imgpath?'':'rotate'}} "></image>
-          </view>
+        <view class="dish">
+
+          <image class='dish-cd' src='../../images/play.png'></image>
+          <image src="{{imgPath}}" class=" dish-cd-logo {{imgpath?'':'rotate'}} "></image>
+        </view>
         <!-- </scroll-view> -->
       </view>
     </swiper-item>
