@@ -30,12 +30,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
 					"name": "音乐",
 					"pathName": "pages/music/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "22",
+					"pathName": "pages/playmusic/playmusic",
 					"query": ""
 				}
 			]

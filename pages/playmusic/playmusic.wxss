@@ -1,5 +1,5 @@
 .mid {
-  min-height: 1280rpx;
+  /* min-height: 1280rpx; */
   color: #fff;
 }
 
@@ -46,42 +46,62 @@
   text-align: center;
   display: block;
 }
-.dish{
-  padding: 50rpx;
-  display: flex;
-  justify-content: center;
-}
-.dish image{
-  width: 500rpx;
-  height: 500rpx;
-  border-radius: 50%;
+
+.dish {
+  height: 700rpx;
+  width: 100%;
+  margin-left: calc(50% - 250rpx);
+  margin-top: 30rpx;
+  position: relative;
+  /* padding: 50rpx; *//* display: flex;
+  justify-content: center; */
 }
 
-.rotate{
-  animation: roll 3s linear infinite;
+.dish .dish-cd {
+  width: 500rpx;
+  height: 500rpx;
 }
-@keyframes roll{
-  from{
+
+ .dish .dish-cd-logo{
+   position: absolute;
+   top: 100rpx;
+   left: 100rpx;
+   z-index: 2;
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+} 
+
+.rotate {
+  animation: roll 6s linear infinite;
+}
+
+@keyframes roll {
+  from {
     transform: rotate(0deg);
   }
-  to{
+
+  to {
     transform: rotate(360deg);
   }
 }
-.foot{
+
+.foot {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin:40rpx;
+  margin: 40rpx;
+  font-size: 28rpx;
 }
 
- .foot .bar{
-   flex: auto;
+.foot .bar {
+  flex: auto;
   height: 6rpx;
   background: #f4f4f4;
-  margin:0rpx 20rpx;
-} 
-.foot .bar .line{
+  margin: 0rpx 20rpx;
+}
+
+.foot .bar .line {
   width: 10%;
   height: 100%;
   background: #31c27c;

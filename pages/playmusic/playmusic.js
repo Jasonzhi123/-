@@ -1,4 +1,4 @@
-var common = require("../../data/data.js")
+  var common = require("../../data/data.js")
 var app = getApp();
 Page({
 
@@ -130,6 +130,16 @@ Page({
 
     this.setData({
       width: X / elewidth * 100
+    })
+  },
+  onShow:function(){
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth
+        })
+      }
     })
   }
 })
