@@ -1,11 +1,16 @@
 .mid {
   color: #fff;
-    /* background-color: rgba(0, 0, 0, 0.3); */
-  
-   /* background-position: center;
-    background-size: cover; */
-    /* filter: blur(30rpx); */
-    /* transform: scale(1.15); */
+  height: 100%;
+  overflow: hidden;
+}
+
+.music-control {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+  overflow: hidden;
 }
 
 .top {
@@ -89,12 +94,14 @@
   top: -20rpx;
   left: calc(50% - 70rpx);
   transform: rotate(-30deg);
-  transform-origin:60rpx 60rpx;
-  transition:all linear 0.5s;
+  transform-origin: 60rpx 60rpx;
+  transition: all linear 0.5s;
 }
- .moveStick{
+
+.moveStick {
   transform: rotate(-6deg);
-} 
+}
+
 .rotate {
   animation: roll 6s linear infinite;
 }
@@ -131,24 +138,25 @@
 }
 
 .song-bg {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-position: center;
-    background-size: cover;
-    filter: blur(30rpx);
-    transform: scale(1.15);
+  position: absolute;
+  /* z-index: -1; */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-position: center;
+  background-size: cover;
+  filter: blur(30rpx);
+  transform: scale(1.15);
+  height: 93%;
 }
 
 .song-bg:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
 }
