@@ -39,10 +39,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "22",
 					"pathName": "pages/playmusic/playmusic",
-					"query": ""
+					"query": "id=4"
 				}
 			]
 		}

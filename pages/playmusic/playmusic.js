@@ -17,7 +17,6 @@ Page({
     // 把数据从APP中取出来
     console.log(options)
     var columnNumber = options.columnNumber;  //栏目序号
-
     var that = this;
     var songlist = app.globalData.songlist;   //歌曲信息
     console.log(songlist)
@@ -25,13 +24,16 @@ Page({
     wx.setNavigationBarTitle({
       title: '歌曲：' + songlist.albumname
     })
-
+    // 获取栏目歌曲
     common.toplist_detailed(columnNumber, function (data) {
      console.log(data)
      var columnSonglist = data.songlist;
-
+     console.log(columnSonglist)
+     that.setData({
+       columnSonglist
+     })
     })
-
+    // 设置导航栏
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#333',
@@ -40,6 +42,7 @@ Page({
         timingFunc: 'easeIn'
       }
     })
+
     this.setData({
       songlist: songlist,
       imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
