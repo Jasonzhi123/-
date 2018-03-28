@@ -28,7 +28,8 @@ Page({
 
     common.toplist_detailed(index, function (data) {
       var color = data.color.toString(16);
-      if (color == 0) {
+      console.log(color)
+      if (color == 0 || color.length<6) {
         color = "000";
       };
       that.setData({
