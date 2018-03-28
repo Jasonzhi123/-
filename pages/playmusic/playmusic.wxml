@@ -11,7 +11,7 @@
       <image bindtap="playmusic" src="{{imgpath?'../../images/icon-play.png':'../../images/icon-pause.png'}}" class="right"></image>
     </view>
 
-    <swiper indicator-dots="{{true}}" indicator-color="#acacac" indicator-active-color="#fff" style="height:700rpx; margin:50rpx 0rpx;">
+    <swiper indicator-dots="{{true}}" indicator-color="#acacac" indicator-active-color="#fff" style="height:700rpx; ">
       <swiper-item>
         <view class="control">
           <image class="control-stick {{imgpath?'':'moveStick'}}" src='../../images/aag.png'></image>
@@ -25,47 +25,47 @@
       </swiper-item>
       <swiper-item>
         <view class="">
-          <scroll-view style="height:700rpx; margin:50rpx 0rpx;" class="" scroll-y>
+          <scroll-view style="height:700rpx; " class="" scroll-y>
             <view class='playQueue'>
               <view class='playQueue-top'>
                 播放队列
                 <text>({{columnSonglist.length}}首)</text>
               </view>
-              <view class='playQueue-item'>
-             <view class='playQueue-item'>
-                <view class='songName'>歌名</view>
-                <view>-</view>
-                <view class='songerName'>作何</view>
-             </view>
-                 <view class="ani_playing" >
+              <view class='playQueue-item' wx:for="{{columnSonglist}}">
+                <view class='playQueue-item-name' bindtap='clickOpenMusic'>
+                  <view class='songName'>{{item.data.songname}}</view>
+                  <view>-</view>
+                  <view class='songerName'>{{item.data.singer[0].name}}</view>
+                </view>
+                <view class="ani_playing">
                   <text></text>
                   <text></text>
                   <text></text>
                   <text></text>
-                </view> 
+                </view>
               </view>
             </view>
 
-        </scroll-view>
-  </view>
-  </swiper-item>
-  <!-- <swiper-item>
+          </scroll-view>
+        </view>
+      </swiper-item>
+      <!-- <swiper-item>
       <view class="song">
         <scroll-view style="height:800rpx; margin:50rpx 0rpx;" class="" scroll-y>
           <view class="lyric" wx:key="unique" wx:for="{{lyricText}}">{{item}}</view>
         </scroll-view>
       </view>
     </swiper-item>-->
-  </swiper>
+    </swiper>
 
-  <view class="foot">
-    <view class="start">{{current_minute
-      <10? '0': ''}}{{current_minute}}:{{currentPosition%60<10? '0': ''}}{{currentPosition%60}}</view>
-        <view class="bar" bindtouchmove="movebar">
-          <view class="line" style="width:{{width+'%'}}"></view>
-        </view>
-        <view class="end">{{current_second
-          <10? '0': ''}}{{current_second}}:{{duration%60<10? '0': ''}}{{duration%60}}</view>
-        </view>
+    <view class="foot">
+      <view class="start">{{current_minute
+        <10? '0': ''}}{{current_minute}}:{{currentPosition%60<10? '0': ''}}{{currentPosition%60}}</view>
+          <view class="bar" bindtouchmove="movebar">
+            <view class="line" style="width:{{width+'%'}}"></view>
+          </view>
+          <view class="end">{{current_second
+            <10? '0': ''}}{{current_second}}:{{duration%60<10? '0': ''}}{{duration%60}}</view>
+          </view>
+      </view>
     </view>
-  </view>
