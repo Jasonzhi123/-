@@ -27,7 +27,7 @@ Page({
     setTimeout(function () {
       console.log(333)
       wx.reLaunch({
-        url: '../index/index',
+        url: '../music/index',
       })
     }, 2000)
 

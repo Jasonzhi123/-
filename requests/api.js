@@ -1,4 +1,4 @@
-const API_BASE = 'http://news-at.zhihu.com/api';
+const API_BASE = 'https://news-at.zhihu.com/api';
 const API_V4 = API_BASE + '/4';
 const API_V3 = API_BASE + '/3';
 
@@ -29,7 +29,7 @@ function getNewsDetail(newsId) {
  * @returns {string}
  */
 function getBeforeNews(date) {
-  return 'http://news.at.zhihu.com/api/4/news/before/' + date;
+  return 'https://news.at.zhihu.com/api/4/news/before/' + date;
 }
 
 /**

@@ -17,10 +17,12 @@ Page({
     var columnNumber = options.columnNumber;  //栏目序号
     var that = this;
     var songlist = app.globalData.songlist;   //歌曲信息
+    console.log(songlist)
 
     // 获取栏目歌曲列表
     common.toplist_detailed(columnNumber, function (data) {
       var columnSonglist = data.songlist;
+      console.log(columnSonglist)
       that.setData({
         columnSonglist
       })
@@ -42,6 +44,7 @@ Page({
 
     this.setData({
       songlist: songlist,
+      songid: songlist.songid,
       imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
     });
     // 播放音乐

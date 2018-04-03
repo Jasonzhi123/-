@@ -206,9 +206,6 @@
 }
 
 .ani_playing {
-  /* position: absolute;
-  top: 34rpx;
-  right: 50rpx;*/
   text-align: right;
   width: 50rpx;
   height: 50rpx;

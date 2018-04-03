@@ -37,7 +37,7 @@
                   <view>-</view>
                   <view class='songerName'>{{item.data.singer[0].name}}</view>
                 </view>
-                <view class="ani_playing">
+                <view class="ani_playing" wx:if="{{songid ==item.data.songid}}">
                   <text></text>
                   <text></text>
                   <text></text>
