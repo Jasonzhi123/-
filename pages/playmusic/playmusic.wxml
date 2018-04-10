@@ -2,14 +2,14 @@
   <view class="song-bg" style="background-image:url({{imgPath}})">
   </view>
   <view class='music-control'>
-    <view class="top">
+     <view class="top">
       <image src="{{imgPath}}" class="left"></image>
       <view class="content">
         <text class="title">{{songlist.songname}}</text>
         <text class="name">{{songlist.singer[0].name}}</text>
       </view>
       <image bindtap="playmusic" src="{{imgpath?'../../images/icon-play.png':'../../images/icon-pause.png'}}" class="right"></image>
-    </view>
+    </view> 
 
     <swiper indicator-dots="{{true}}" indicator-color="#acacac" indicator-active-color="#fff" style="height:700rpx; ">
       <swiper-item>
@@ -25,24 +25,25 @@
       </swiper-item>
       <swiper-item>
         <view class="">
-          <scroll-view style="height:700rpx; " class="" scroll-y>
+          <scroll-view style="height:700rpx; " class="" scroll-y scroll-top="{{selectedIndex*45}}">
             <view class='playQueue'>
               <view class='playQueue-top'>
                 播放队列
                 <text>({{columnSonglist.length}}首)</text>
               </view>
               <view class='playQueue-item' wx:for="{{columnSonglist}}">
-                <view class='playQueue-item-name' bindtap='clickOpenMusic'>
-                  <view class='songName'>{{item.data.songname}}</view>
-                  <view>-</view>
-                  <view class='songerName'>{{item.data.singer[0].name}}</view>
-                </view>
                 <view class="ani_playing" wx:if="{{songid ==item.data.songid}}">
                   <text></text>
                   <text></text>
                   <text></text>
                   <text></text>
                 </view>
+                <view class='playQueue-item-name' data-index='{{index}}' data-songlist='{{item.data}}' data-songmid='{{item.data.songmid}}' bindtap='clickOpenMusic'>
+                  <view class='songName'>{{item.data.songname}}</view>
+                  <view>-</view>
+                  <view class='songerName'>{{item.data.singer[0].name}}</view>
+                </view>
+
               </view>
             </view>
 
@@ -66,6 +67,33 @@
           </view>
           <view class="end">{{current_second
             <10? '0': ''}}{{current_second}}:{{duration%60<10? '0': ''}}{{duration%60}}</view>
+          </view>
+          <!--底部按钮  -->
+          <view class="playingaction">
+             <view class="pa-saction" bindtap="playshuffle" hidden="{{shuffle!=1}}"> 
+            <image src="../../images/cm2_icn_loop@2x.png" />
+             </view> 
+            <view class="pa-saction" bindtap="playshuffle" hidden="{{shuffle!=2}}">
+              <image src="../../images/cm2_icn_one@2x.png" />
+            </view>
+            <view class="pa-saction" bindtap="playshuffle" hidden="{{shuffle!=3}}">
+              <image src="../../images/cm2_icn_shuffle@2x.png" />
+            </view>
+            <view class="pa-maction" data-other="-1" bindtap="playother">
+              <image src="../../images/ajh.png" />
+            </view>
+            <view class="pa-baction" hidden="{{imgpath}}" bindtap="playmusic" >
+              <image id='pa-playing' src="../../images/ajd.png" />
+            </view>
+            <view class="pa-baction" hidden="{{!imgpath}}" bindtap="playmusic" >
+              <image id='pa-pause' src="../../images/ajf.png" />
+            </view>
+            <view class="pa-maction" data-other="1" bindtap="playother">
+              <image src="../../images/ajb.png" />
+            </view>
+             <view class="pa-saction" bindtap="togpinfo">
+          <image src="../../images/cm2_play_icn_love@2x.png" />
+        </view> 
           </view>
       </view>
     </view>

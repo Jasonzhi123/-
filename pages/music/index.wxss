@@ -120,18 +120,26 @@
 .page03 .search {
   display: flex;
   margin: 20rpx;
+  line-height: 80rpx;
   overflow: hidden;
 }
-
+.search-box{
+  border: 1px solid #aaa;
+ display: flex;
+   flex: 6;
+   height: 80rpx;
+   padding: 0rpx 20rpx;
+   border-radius: 30rpx;
+}
 .page03 .search input {
   flex: 6;
   padding: 0rpx 20rpx;
   height: 80rpx;
   line-height: 80rpx;
   background: #fff;
-  border-radius: 25rpx;
+  /* border-radius: 25rpx; */
   font-size: 32rpx;
-  border: 1px solid #aaa;
+  /* border: 1px solid #aaa; */
 }
 
 .page03 .search .button {
@@ -217,7 +225,7 @@
   height: 150rpx;
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
-    bottom: 0rpx;  
+  bottom: 0rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -244,9 +252,11 @@
   font-size: 40rpx;
   line-height: 60rpx;
 }
-.songname{
+
+.songname {
   font-size: 26rpx;
 }
+
 .music .right {
   width: 100rpx;
   height: 100rpx;
@@ -295,21 +305,26 @@
   width: 50rpx;
   height: 50rpx;
 }
-.historyList .historyList-item{
-display: flex;
-justify-content: space-between;
-align-items: center;
-border-bottom: 1px dashed #acacac;
-height: 100rpx;
 
+.historyList .historyList-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #acacac;
+  height: 100rpx;
 }
-.historyList .historyList-item .item-right{
+
+.historyList .historyList-item .item-right {
   width: 50rpx;
   height: 50rpx;
-
 }
-.item-left{
+
+.item-left {
   color: #acacac;
   font-weight: "幼圆";
+}
+.sf_clear{
+  /* margin-left: -30rpx; */
 
 }
+

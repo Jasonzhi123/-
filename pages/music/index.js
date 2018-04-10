@@ -96,6 +96,7 @@ Page({
     this.setData({
       searchKey: ev.detail.value,  //关键字
       searchshow: false,  //隐藏热门搜索
+      isShowClear:true
     })
     if (ev.detail.value == '' || ev.detail.value == undefined) {
       this.setData({
@@ -270,6 +271,18 @@ Page({
           searchHistory: ''      //清空
         })
       }
+    })
+  },
+  /**
+   * 清除关键字
+   * */ 
+  clear_kw:function(){
+    this.setData({
+      searchKey:'',
+      isShowClear:false,
+      searchshow: true, //显示热门搜索
+      searchlist: [],      //清空搜索数组
+      showSearchHistory: true    //显示历史搜索
     })
   }
 })

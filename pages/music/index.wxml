@@ -55,7 +55,15 @@
 <!--搜索s  -->
 <view class="page03" hidden="{{navcur!=2}}">
   <view class="search">
+   <view class='search-box'>
+    <view>
+      <icon type="search" size="16" color="#aaa" />
+    </view>
     <input type="search" placeholder="搜索歌曲" bindinput="bindKeywordInput" value='{{searchKey}}' />
+    <view class="sf_clear" bindtap="clear_kw" hidden="{{!isShowClear}}">
+      <icon type="clear" size="16" color="#aaa" />
+    </view>
+   </view>
     <button class='button' bindtap="searchBtn">{{searchvalue}}</button>
   </view>
 
@@ -67,15 +75,15 @@
     </view>
   </view>
 
-  <view class="historyList" wx:if="{{searchHistory.length && showSearchHistory}}" >
+  <view class="historyList" wx:if="{{searchHistory.length && showSearchHistory}}">
     <view class="title">
       <view class='title-left'>历史搜索</view>
       <image class='title-right' bindtap='deleteAll' src='../../images/delete.png'></image>
     </view>
 
-    <view class="historyList-item" data-searchKey='{{item}}' bindtap='toSearchList'  wx:for="{{searchHistory}}">
+    <view class="historyList-item" data-searchKey='{{item}}' bindtap='toSearchList' wx:for="{{searchHistory}}">
       <view class='item-left'>{{item}}</view>
-      <image class='item-right' catchtap='deleteItem' data-itemKey='{{item}}'  data-index='{{index}}' src='../../images/delete-item.png'></image>      
+      <image class='item-right' catchtap='deleteItem' data-itemKey='{{item}}' data-index='{{index}}' src='../../images/delete-item.png'></image>
     </view>
   </view>
 

@@ -60,9 +60,10 @@ Page({
   autoplaymusic: function (ev) {
     var columnNumber = this.data.columnNumber;
     var index = ev.currentTarget.dataset.play;  //获取ID
+    console.log(index)
     app.globalData.songlist = this.data.songlist[index].data //把数据保存在APP中
     wx.navigateTo({
-      url: '../playmusic/playmusic?columnNumber=' + columnNumber
+      url: '../playmusic/playmusic?columnNumber=' + columnNumber +'&index='+index
     })
   },
 })
