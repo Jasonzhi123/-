@@ -183,13 +183,15 @@
   padding: 5rpx 20rpx;
   font-size: 14px;
   height: 80rpx;
+  margin: 0rpx 40rpx;
   line-height: 80rpx;
   border-bottom: 1px solid #aaa;
 }
 
 .playQueue-item-name {
   display: flex;
-  width: 620rpx;
+   width: 620rpx; 
+  /* padding: 0rpx 40rpx; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -208,6 +210,7 @@
   width: 50rpx;
   height: 50rpx;
   overflow: hidden;
+  margin-right: 20rpx;
   transform-style: preserve-3d;
 }
 

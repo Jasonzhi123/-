@@ -43,7 +43,9 @@
                   <view>-</view>
                   <view class='songerName'>{{item.data.singer[0].name}}</view>
                 </view>
-
+                <view wx:if="{{songid !=item.data.songid}}" bindtap='clearSongItem'>
+                  <icon type="clear" size="16" color="#a1a1a1" />
+                </view>
               </view>
             </view>
 
@@ -93,7 +95,7 @@
               <image src="../../images/ajb.png" />
             </view>
             <view class="pa-saction" bindtap="collection">
-              <image src="../../images/cm2_play_icn_love@2x.png" />
+              <image src="{{iscollection? '../../images/cm2_play_icn_love@2x.png':'../../images/collection-on.png'}}" />
             </view>
           </view>
       </view>

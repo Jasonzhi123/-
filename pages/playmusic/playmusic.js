@@ -9,6 +9,7 @@ Page({
     current_minute: 0,
     current_second: 0,
     imgpath: false,
+    iscollection: true,
     shuffle: 1
   },
 
@@ -16,7 +17,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var shuffle = wx.getStorageSync('shuffle');
-    this.setData({ shuffle})
+    this.setData({ shuffle })
     console.log(shuffle)
     var columnNumber = options.columnNumber;  //栏目序号
     var that = this;
@@ -112,10 +113,12 @@ Page({
         songlist,
         songid: songlist.songid,
         selectedIndex,
+        iscollection: true,
         imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
       })
       // 播放音乐
       that.playmusic()
+      that.isCollection();  //判断是否已收藏
 
       // //设置导航栏 
       wx.setNavigationBarTitle({
@@ -132,8 +135,25 @@ Page({
         timingFunc: 'easeIn'
       }
     })
+    this.isCollection();  //判断是否已收藏
   },
-
+  /**
+   * 判断是否收藏
+   * */
+  isCollection: function () {
+    var that = this;
+    var collectionList = wx.getStorageSync('collectionList');
+    var songlist = this.data.songlist;
+    if (collectionList) {
+      for (var i = 0, len = collectionList.length; i < len; i++) {
+        if (collectionList[i].songid == songlist.songid) {
+          that.setData({
+            iscollection: false
+          })
+        }
+      }
+    }
+  },
   /**
    * 暂停音乐
   */
@@ -243,7 +263,6 @@ Page({
       title: msg,
       duration: 2000
     })
-
   },
   /**
    * 控制歌曲上下一首
@@ -271,10 +290,13 @@ Page({
       songlist,
       songid: songlist.songid,
       selectedIndex,
+      iscollection: true,
       imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
     })
-   
+
     that.playmusic()   // 播放音乐
+    that.isCollection();  //判断是否已收藏
+
     //设置导航栏 
     wx.setNavigationBarTitle({
       title: '歌曲：' + songlist.albumname
@@ -282,23 +304,51 @@ Page({
   },
   /**
    * 收藏歌曲
-   * */ 
-  collection:function(){
+   * */
+  collection: function () {
     var that = this;
     var songlist = this.data.songlist;  //歌曲序号
     var iscollection = this.data.iscollection;
-    // console.log()
     var collectionList = wx.getStorageSync('collectionList') || [];
-    if (!iscollection){
+    if (iscollection) {
       collectionList.push(songlist)
       wx.showToast({
         title: '收藏成功',
         success: function () {
           wx.setStorageSync('collectionList', collectionList)
+          that.setData({
+            iscollection: false
+          })
         }
       })
+    } else {
+      if (collectionList) {
+        for (var i = 0, len = collectionList.length; i < len; i++) {
+          if (collectionList[i].songid == songlist.songid) {
+            collectionList.splice(i, 1)
+            wx.showToast({
+              title: '取消收藏',
+              success: function () {
+                wx.setStorageSync('collectionList', collectionList)
+                that.setData({
+                  iscollection: true
+                })
+              }
+            })
+            // wx.setStorageSync('collectionList', collectionList)            
+            // that.setData({
+            //   iscollection: true
+            // })
+            return
+          }
+        }
+      }
     }
     // console.log(collectionList)
-   
+
+  },
+  clearSongItem:function(e){
+
   }
+
 })
