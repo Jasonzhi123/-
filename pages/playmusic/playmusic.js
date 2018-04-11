@@ -15,6 +15,9 @@ Page({
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
     console.log(options)
+    var shuffle = wx.getStorageSync('shuffle');
+    this.setData({ shuffle})
+    console.log(shuffle)
     var columnNumber = options.columnNumber;  //栏目序号
     var that = this;
     var songlist = app.globalData.songlist;    //歌曲信息
@@ -73,11 +76,32 @@ Page({
     //播放完歌曲
     wx.onBackgroundAudioStop(function () {
       console.log('播放完')
-      var selectedIndex = that.data.selectedIndex;
-      var columnSonglist = that.data.columnSonglist;
-      that.playmusic()
-      selectedIndex++;
+      var selectedIndex = that.data.selectedIndex;   //序号
+      var columnSonglist = that.data.columnSonglist;   //歌单
+      that.playmusic()   //暂停音乐
+      var shuffle = that.data.shuffle;
+
+      switch (shuffle) {
+        case 1:
+          // 顺序播放;
+          selectedIndex++;
+          break;
+        case 2:
+          // 单曲播放
+          // selectedIndex = selectedIndex
+          break;
+        case 3:
+          // 随机播放
+          console.log('随机播放')
+          let num = parseInt(Math.random() * 10)
+          console.log(num)
+          selectedIndex = parseInt(selectedIndex) + num
+      }
       console.log(columnSonglist)
+      console.log(selectedIndex)
+      if (selectedIndex >= columnSonglist.length) {
+        selectedIndex = 0
+      }
       var songmid = columnSonglist[selectedIndex].data.songmid;
       var songlist = columnSonglist[selectedIndex].data;
       console.log(songlist)
@@ -91,7 +115,7 @@ Page({
         imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
       })
       // 播放音乐
-      that.autoplaymusic()
+      that.playmusic()
 
       // //设置导航栏 
       wx.setNavigationBarTitle({
@@ -214,6 +238,7 @@ Page({
       case 3:
         msg = "随机播放"
     }
+    wx.setStorageSync('shuffle', shuffle)
     wx.showToast({
       title: msg,
       duration: 2000
@@ -221,11 +246,59 @@ Page({
 
   },
   /**
-   * 上一首
-   * */ 
-   playother: function (e) {
-    var type = e.currentTarget.dataset.other;
+   * 控制歌曲上下一首
+   * */
+  playother: function (e) {
+    var num = e.currentTarget.dataset.other;
     var that = this;
-  
+    var selectedIndex = this.data.selectedIndex;  //歌曲序号
+    var columnSonglist = this.data.columnSonglist;   //歌单
+    selectedIndex = parseInt(num) + parseInt(selectedIndex)
+
+    if (selectedIndex < 0 || selectedIndex > columnSonglist.length) {
+      selectedIndex = 0
+    }
+
+    that.playmusic()   //暂停音乐
+
+    var songmid = columnSonglist[selectedIndex].data.songmid;
+    var songlist = columnSonglist[selectedIndex].data;
+
+    app.globalData.songlist = songlist;
+    app.globalData.selectedIndex = selectedIndex;
+
+    that.setData({
+      songlist,
+      songid: songlist.songid,
+      selectedIndex,
+      imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
+    })
+   
+    that.playmusic()   // 播放音乐
+    //设置导航栏 
+    wx.setNavigationBarTitle({
+      title: '歌曲：' + songlist.albumname
+    })
   },
+  /**
+   * 收藏歌曲
+   * */ 
+  collection:function(){
+    var that = this;
+    var songlist = this.data.songlist;  //歌曲序号
+    var iscollection = this.data.iscollection;
+    // console.log()
+    var collectionList = wx.getStorageSync('collectionList') || [];
+    if (!iscollection){
+      collectionList.push(songlist)
+      wx.showToast({
+        title: '收藏成功',
+        success: function () {
+          wx.setStorageSync('collectionList', collectionList)
+        }
+      })
+    }
+    // console.log(collectionList)
+   
+  }
 })
