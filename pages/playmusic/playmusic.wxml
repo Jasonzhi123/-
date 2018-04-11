@@ -68,9 +68,10 @@
           <view class="end">{{current_second
             <10? '0': ''}}{{current_second}}:{{duration%60<10? '0': ''}}{{duration%60}}</view>
           </view>
+
           <!--底部按钮  -->
           <view class="playingaction">
-             <view class="pa-saction" bindtap="playshuffle" hidden="{{shuffle!=1}}"> 
+             <view class="pa-saction" bindtap="playshuffle" data-shuffle='2' hidden="{{shuffle!=1}}"> 
             <image src="../../images/cm2_icn_loop@2x.png" />
              </view> 
             <view class="pa-saction" bindtap="playshuffle" hidden="{{shuffle!=2}}">

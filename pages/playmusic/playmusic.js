@@ -9,7 +9,7 @@ Page({
     current_minute: 0,
     current_second: 0,
     imgpath: false,
-    shuffle:1
+    shuffle: 1
   },
 
   /* 生命周期函数--监听页面加载 */
@@ -18,7 +18,7 @@ Page({
     var columnNumber = options.columnNumber;  //栏目序号
     var that = this;
     var songlist = app.globalData.songlist;    //歌曲信息
-    var selectedIndex=options.index;           //歌曲排序号
+    var selectedIndex = options.index;           //歌曲排序号
 
     // 获取栏目歌曲列表
     if (columnNumber) {
@@ -118,7 +118,7 @@ Page({
     this.setData({
       imgpath: off
     }),
-    this.autoplaymusic()
+      this.autoplaymusic()
   },
 
   /**
@@ -163,13 +163,13 @@ Page({
     var songmid = e.currentTarget.dataset.songmid;
     var songlist = e.currentTarget.dataset.songlist;
     var selectedIndex = e.currentTarget.dataset.index;
-    
+
     app.globalData.songlist = songlist;
     app.globalData.selectedIndex = selectedIndex;
-    
+
     this.setData({
       songlist,
-      songid: songlist.songid,      
+      songid: songlist.songid,
       selectedIndex,
       imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
     })
@@ -191,5 +191,41 @@ Page({
         })
       }
     })
-  }
+  },
+  /**
+   * 播放的顺序
+   * */
+  playshuffle: function (e) {
+    console.log(e)
+    var shuffle = this.data.shuffle;
+    shuffle++;
+    shuffle = shuffle > 3 ? 1 : shuffle;
+    this.setData({
+      shuffle: shuffle
+    })
+    var msg = "";
+    switch (shuffle) {
+      case 1:
+        msg = "顺序播放";
+        break;
+      case 2:
+        msg = "单曲播放";
+        break;
+      case 3:
+        msg = "随机播放"
+    }
+    wx.showToast({
+      title: msg,
+      duration: 2000
+    })
+
+  },
+  /**
+   * 上一首
+   * */ 
+   playother: function (e) {
+    var type = e.currentTarget.dataset.other;
+    var that = this;
+  
+  },
 })
