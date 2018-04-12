@@ -43,7 +43,7 @@
                   <view>-</view>
                   <view class='songerName'>{{item.data.singer[0].name}}</view>
                 </view>
-                <view wx:if="{{songid !=item.data.songid}}" bindtap='clearSongItem'>
+                <view wx:if="{{songid !=item.data.songid}}"  data-index='{{index}}' bindtap='clearSongItem'>
                   <icon type="clear" size="16" color="#a1a1a1" />
                 </view>
               </view>

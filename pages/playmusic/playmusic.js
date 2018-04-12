@@ -347,8 +347,16 @@ Page({
     // console.log(collectionList)
 
   },
-  clearSongItem:function(e){
-
+  /**
+   * 删除当前歌曲
+   * */ 
+  clearSongItem: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var columnSonglist = this.data.columnSonglist;
+    columnSonglist.splice(index, 1)
+    this.setData({
+      columnSonglist
+    })
   }
 
 })
