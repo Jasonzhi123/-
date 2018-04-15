@@ -1,3 +1,46 @@
 <view class='more'>
-更多
+  <view class="per-top">
+    <view class="top-top">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <view class="userinfo-nickname " bindtap='modify'>{{userInfo.nickName}}
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='nav'>
+    <block>
+      <view class='nav-item'>
+        <view>
+          <image src='../../images/collection-on.png'></image>
+        </view>
+        <view>盛和塾分享</view>
+      </view>
+      <view class='nav-item'>
+        <view>
+          <image src='../../images/collection-on.png'></image>
+        </view>
+        <view>为翼分享</view>
+      </view>
+      <view class='nav-item'>
+        <view>
+          <image src='../../images/collection-on.png'></image>
+        </view>
+        <view>盛和商城 </view>
+      </view>
+    </block>
+  </view> -->
+  <view class='per-info'>
+    <view class='per-info-item'>
+      <view class='item-image'>
+        <image src='../../images/collection-on.png'></image>
+      </view>
+      <view class='item-title'>最近播放</view>
+    </view>
+    <view class='per-info-item'>
+      <view class='item-image'>
+        <image src='../../images/collection-on.png'></image>
+      </view>
+      <view class='item-title'>收藏歌单</view>
+    </view>
+  </view>
 </view>

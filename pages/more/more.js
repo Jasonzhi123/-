@@ -12,14 +12,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.login({
+      success: function () {
+        wx.getUserInfo({
+          success: function (res) {
+            var userInfo = res.userInfo
+            that.setData({
+              userInfo
+            })
+          }
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+   
   },
 
   /**

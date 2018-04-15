@@ -146,7 +146,7 @@ Page({
 
   /**
    * 选择相关栏目
-   * */ 
+   * */
   toThemePage: function (e) {
     if (this.data.themeId != e.currentTarget.dataset.id) {
       var _this = this;
@@ -175,7 +175,7 @@ Page({
   },
   /**
    * 今日的文章列表
-   * */ 
+   * */
   loadingMoreEvent: function (e) {
     if (this.data.loadingMore) return;
     var _this = this;
@@ -203,7 +203,7 @@ Page({
 
   /**
    * 去收藏页
-   * */ 
+   * */
   toCollectPage: function () {
     if (this.data.themeId != -1) {
       var _this = this;
@@ -220,7 +220,7 @@ Page({
 
   /**
    * 到相应的文章页面
-   * */ 
+   * */
   toDetailPage: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -230,20 +230,13 @@ Page({
 
   /**
    * 去设置页面
-   * */ 
+   * */
   toSettingPage: function () {
     wx.navigateTo({
       url: '../setting/setting'
     });
   },
-  
-  onShow: function () { },
-  onHide: function () {
 
-  },
-  onUnload: function () {
-
-  },
 });
 
 

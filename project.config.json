@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -40,9 +40,9 @@
 				},
 				{
 					"id": 1,
-					"name": "22",
-					"pathName": "pages/playmusic/playmusic",
-					"query": "id=4"
+					"name": "我的",
+					"pathName": "pages/more/more",
+					"query": ""
 				}
 			]
 		}
