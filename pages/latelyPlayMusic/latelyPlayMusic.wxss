@@ -1,0 +1,291 @@
+.mid {
+  color: #fff;
+  height: 100%;
+  overflow: hidden;
+}
+
+.music-control {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200rpx;
+  padding: 0rpx 30rpx;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.top .left {
+  width: 150rpx;
+  height: 150rpx;
+  flex: none;
+  border-radius: 10rpx;
+}
+
+.top .content {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  margin-left: 40rpx;
+  color: #fff;
+}
+
+.top .content .title {
+  line-height: 80rpx;
+}
+
+.top .content .name {
+  line-height: 60rpx;
+  font-size: 16px;
+}
+
+.top .right {
+  width: 100rpx;
+  height: 100rpx;
+  flex: none;
+}
+
+.lyric {
+  text-align: center;
+  display: block;
+}
+
+.dish {
+  height: 700rpx;
+  width: 100%;
+  margin-left: calc(50% - 250rpx);
+  margin-top: 90rpx;
+  position: relative;
+  /* padding: 50rpx; *//* display: flex;
+  justify-content: center; */
+}
+
+.dish .dish-cd {
+  width: 500rpx;
+  height: 500rpx;
+}
+
+.dish .dish-cd-logo {
+  position: absolute;
+  top: 100rpx;
+  left: 100rpx;
+  z-index: 2;
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+}
+
+.control {
+  position: relative;
+}
+
+.control-stick {
+  width: 200rpx;
+  height: 200rpx;
+  z-index: 2;
+  position: absolute;
+  top: -20rpx;
+  left: calc(50% - 70rpx);
+  transform: rotate(-30deg);
+  transform-origin: 60rpx 60rpx;
+  transition: all linear 0.5s;
+}
+
+.moveStick {
+  transform: rotate(-6deg);
+}
+
+.rotate {
+  animation: roll 6s linear infinite;
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40rpx;
+  font-size: 28rpx;
+}
+
+.foot .bar {
+  flex: auto;
+  height: 6rpx;
+  background: #f4f4f4;
+  margin: 0rpx 20rpx;
+}
+
+.foot .bar .line {
+  width: 10%;
+  height: 100%;
+  background: #31c27c;
+}
+
+.song-bg {
+  position: absolute;
+  /* z-index: -1; */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-position: center;
+  background-size: cover;
+  filter: blur(30rpx);
+  transform: scale(1.15);
+  height: 93%;
+}
+
+.song-bg:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/*播放队列  */
+
+.playQueue {
+  /* width: 100%;
+  height: 100%; *//* background: #999; *//* opacity: 0.3; */
+}
+
+.playQueue .playQueue-top {
+  width: 100%;
+  text-align: center;
+  font-size: 40rpx;
+  color: #fff;
+  line-height: 100rpx;
+  height: 100rpx;
+}
+
+.playQueue .playQueue-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rpx 20rpx;
+  font-size: 14px;
+  height: 80rpx;
+  margin: 0rpx 40rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #aaa;
+}
+
+.playQueue-item-name {
+  display: flex;
+   width: 620rpx; 
+  /* padding: 0rpx 40rpx; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playQueue .playQueue-item .songName {
+  margin-right: 10rpx;
+}
+
+.playQueue .playQueue-item .songerName {
+  margin-left: 10rpx;
+}
+
+.ani_playing {
+  text-align: right;
+  width: 50rpx;
+  height: 50rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+  transform-style: preserve-3d;
+}
+
+.ani_playing text {
+  display: inline-block;
+  width: 5rpx;
+  height: 30rpx;
+  margin-right: 4rpx;
+  background-color: #31c27c;
+}
+
+.ani_playing text:nth-of-type(4) {
+  margin-right: 0;
+}
+
+.ani_playing text {
+  animation-name: bounce;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.ani_playing text:nth-of-type(1) {
+  animation-duration: 400ms;
+}
+
+.ani_playing text:nth-of-type(2) {
+  animation-duration: 600ms;
+}
+
+.ani_playing text:nth-of-type(3) {
+  animation-duration: 700ms;
+}
+
+.ani_playing text:nth-of-type(4) {
+  animation-duration: 500ms;
+}
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: translate3d(0, 24rpx, 0);
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+.playingaction {
+  display: flex;
+  margin: 10rpx 10rpx 30rpx;
+}
+
+.pa-baction, .pa-maction, .pa-saction {
+  flex: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.pa-baction image {
+  width: 110rpx;
+  height: 110rpx;
+  vertical-align: middle;
+}
+
+.pa-maction image {
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+  margin-top: 15rpx;
+}
+
+.pa-saction image {
+  width: 120rpx;
+  height: 120rpx;
+  vertical-align: middle;
+}

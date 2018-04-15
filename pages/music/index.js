@@ -96,7 +96,7 @@ Page({
     this.setData({
       searchKey: ev.detail.value,  //关键字
       searchshow: false,  //隐藏热门搜索
-      isShowClear:true
+      isShowClear: true
     })
     if (ev.detail.value == '' || ev.detail.value == undefined) {
       this.setData({
@@ -149,6 +149,7 @@ Page({
     })
     this.getSearchData(val, searchId);    //获取搜索数据
   },
+
   /**
    * 获取搜索数据
    * */
@@ -169,13 +170,30 @@ Page({
       })
     })
   },
-  // 打开音乐
+
+  /**
+   * 打开音乐
+   * */
   openmusic: function (ev) {
     var index = ev.currentTarget.dataset.searchid;
     console.log(index)
-    app.globalData.songlist = this.data.searchlist[index]
+    app.globalData.songlist = this.data.searchlist[index];
+    console.log(this.data.searchlist[index])
+    var songid = this.data.searchlist[index].songid;
+    // 将音乐设置为最近播放
+    var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
+    if (latelyPlayMusicList) {
+      for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
+        if (latelyPlayMusicList[i].songid == songid) {
+          latelyPlayMusicList.splice(i, 1)
+        }
+      }
+    }
+    latelyPlayMusicList.unshift(this.data.searchlist[index])
+
+    wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)
     wx.navigateTo({
-      url: '../playmusic/playmusic'
+      url: '../latelyPlayMusic/latelyPlayMusic'
     })
   },
 
@@ -197,6 +215,7 @@ Page({
     }
     app.globalData.imgpath = this.data.imgpath;
   },
+
   // 打开音乐页面
   openmusicpage: function () {
     wx.navigateTo({
@@ -211,6 +230,7 @@ Page({
 
     })
   },
+
   onShow: function () {
     wx.getSystemInfo({
       success: (res) => {
@@ -275,11 +295,11 @@ Page({
   },
   /**
    * 清除关键字
-   * */ 
-  clear_kw:function(){
+   * */
+  clear_kw: function () {
     this.setData({
-      searchKey:'',
-      isShowClear:false,
+      searchKey: '',
+      isShowClear: false,
       searchshow: true, //显示热门搜索
       searchlist: [],      //清空搜索数组
       showSearchHistory: true    //显示历史搜索

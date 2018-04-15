@@ -8,7 +8,8 @@
     "pages/playmusic/playmusic",
     "pages/music/index",
     "pages/detail/detail",
-    "pages/more/more"
+    "pages/more/more",
+    "pages/latelyPlayMusic/latelyPlayMusic"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -16,7 +16,7 @@ Page({
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
     console.log(options)
-    var shuffle = wx.getStorageSync('shuffle') || 1;
+    var shuffle = wx.getStorageSync('shuffle');
     this.setData({ shuffle })
     console.log(shuffle)
     var columnNumber = options.columnNumber;  //栏目序号
@@ -349,7 +349,7 @@ Page({
   },
   /**
    * 删除当前歌曲
-   * */ 
+   * */
   clearSongItem: function (e) {
     var index = e.currentTarget.dataset.index;
     var columnSonglist = this.data.columnSonglist;
