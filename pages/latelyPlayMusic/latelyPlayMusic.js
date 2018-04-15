@@ -16,25 +16,25 @@ Page({
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
     console.log(options)
-    var shuffle = wx.getStorageSync('shuffle');
-    this.setData({ shuffle })
-    console.log(shuffle)
-    var columnNumber = options.columnNumber;  //栏目序号
+    var shuffle = wx.getStorageSync('shuffle') || 1;
     var that = this;
     var songlist = app.globalData.songlist;    //歌曲信息
+    console.log(songlist)
     var selectedIndex = options.index;           //歌曲排序号
-
-    // 获取栏目歌曲列表
-    if (columnNumber) {
-      common.toplist_detailed(columnNumber, function (data) {
-        var columnSonglist = data.songlist;
-        app.globalData.columnSonglist = columnSonglist;
-        app.globalData.selectedIndex = selectedIndex;
-        that.setData({
-          columnSonglist,
-          selectedIndex
-        })
-      })
+    var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [] ;
+    console.log(latelyPlayMusicList)
+    this.setData({ shuffle,latelyPlayMusicList })
+    // 获取最近播放歌曲列表
+    if (latelyPlayMusicList) {
+      // common.toplist_detailed(columnNumber, function (data) {
+      //   var columnSonglist = data.songlist;
+      //   app.globalData.columnSonglist = columnSonglist;
+      //   app.globalData.selectedIndex = selectedIndex;
+      //   that.setData({
+      //     columnSonglist,
+      //     selectedIndex
+      //   })
+      // })
     }
     // 从首页进来，使用全局变量传参
     if (app.globalData.columnSonglist) {
@@ -56,7 +56,7 @@ Page({
     });
 
     // 播放音乐
-    this.autoplaymusic()
+    // this.autoplaymusic()
 
     // 播放时长
     clearInterval(that.data.timer)

@@ -29,21 +29,21 @@
             <view class='playQueue'>
               <view class='playQueue-top'>
                 最近播放队列
-                <text>({{columnSonglist.length}}首)</text>
+                <text>({{latelyPlayMusicList.length}}首)</text>
               </view>
-              <view class='playQueue-item' wx:for="{{columnSonglist}}">
-                <view class="ani_playing" wx:if="{{songid ==item.data.songid}}">
+              <view class='playQueue-item' wx:for="{{latelyPlayMusicList}}">
+                <view class="ani_playing" wx:if="{{songid ==item.songid}}">
                   <text></text>
                   <text></text>
                   <text></text>
                   <text></text>
                 </view>
-                <view class='playQueue-item-name' data-index='{{index}}' data-songlist='{{item.data}}' data-songmid='{{item.data.songmid}}' bindtap='clickOpenMusic'>
-                  <view class='songName'>{{item.data.songname}}</view>
+                <view class='playQueue-item-name' data-index='{{index}}' data-songlist='{{item}}' data-songmid='{{item.songmid}}' bindtap='clickOpenMusic'>
+                  <view class='songName'>{{item.songname}}</view>
                   <view>-</view>
-                  <view class='songerName'>{{item.data.singer[0].name}}</view>
+                  <view class='songerName'>{{item.singer[0].name}}</view>
                 </view>
-                <view wx:if="{{songid !=item.data.songid}}"  data-index='{{index}}' bindtap='clearSongItem'>
+                <view wx:if="{{songid !=item.songid}}"  data-index='{{index}}' bindtap='clearSongItem'>
                   <icon type="clear" size="16" color="#a1a1a1" />
                 </view>
               </view>

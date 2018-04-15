@@ -172,13 +172,12 @@ Page({
   },
 
   /**
-   * 打开音乐
+   * 打开搜索的音乐
    * */
   openmusic: function (ev) {
     var index = ev.currentTarget.dataset.searchid;
     console.log(index)
     app.globalData.songlist = this.data.searchlist[index];
-    console.log(this.data.searchlist[index])
     var songid = this.data.searchlist[index].songid;
     // 将音乐设置为最近播放
     var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
@@ -197,7 +196,9 @@ Page({
     })
   },
 
-  // 切换音乐
+  /**
+   * 切换音乐播放
+   * */ 
   Togglesong: function (ev) {
     var off = !this.data.imgpath;
     app.globalData.imgpath = off;
@@ -216,7 +217,9 @@ Page({
     app.globalData.imgpath = this.data.imgpath;
   },
 
-  // 打开音乐页面
+  /**
+   * 打开音乐页面
+   * */ 
   openmusicpage: function () {
     wx.navigateTo({
       url: '../playmusic/playmusic'
