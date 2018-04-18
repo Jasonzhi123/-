@@ -1,4 +1,5 @@
 .more .per-top {
+  margin-top: 50rpx;
   height: 300rpx;
   display: flex;
   justify-content: center;
@@ -27,6 +28,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-top: 60rpx;
 
 }
 
@@ -38,8 +40,12 @@
 }
 
 .nav-item image {
-  width: 100rpx;
-  height: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+.nav-item-title{
+  font-size: 28rpx;
+  line-height: 80rpx;
 }
 .per-info-item{
   display: flex;

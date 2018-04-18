@@ -9,7 +9,8 @@
     "pages/music/index",
     "pages/detail/detail",
     "pages/more/more",
-    "pages/latelyPlayMusic/latelyPlayMusic"
+    "pages/latelyPlayMusic/latelyPlayMusic",
+    "pages/musiclist/musiclist"
   ],
   "window": {
     "backgroundTextStyle": "light",

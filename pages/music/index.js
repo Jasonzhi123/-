@@ -181,14 +181,14 @@ Page({
     var songid = this.data.searchlist[index].songid;
     // 将音乐设置为最近播放
     var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
-    if (latelyPlayMusicList) {
-      for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
-        if (latelyPlayMusicList[i].songid == songid) {
-          latelyPlayMusicList.splice(i, 1)
-        }
-      }
-    }
-    latelyPlayMusicList.unshift(this.data.searchlist[index])
+    // if (latelyPlayMusicList) {
+    //   for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
+    //     if (latelyPlayMusicList[i].songid == songid) {
+    //       latelyPlayMusicList.splice(i, 1)
+    //     }
+    //   }
+    // }
+    // latelyPlayMusicList.unshift(this.data.searchlist[index])
 
     wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)
     wx.navigateTo({
@@ -206,11 +206,21 @@ Page({
       imgpath: off
     })
     var songmid = wx.getStorageSync('songmid')
+    var strMediaMid = wx.getStorageSync('strMediaMid')
+
+
     if (this.data.imgpath == false) {
       console.log(songmid)
-      wx.playBackgroundAudio({
-        dataUrl: 'http://ws.stream.qqmusic.qq.com/C100' + songmid + '.m4a?fromtag=38'
-      })
+      if (strMediaMid) {
+        wx.playBackgroundAudio({
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + strMediaMid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+
+        })
+      } else {
+        wx.playBackgroundAudio({
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+        })
+      }
     } else {
       wx.pauseBackgroundAudio()
     }

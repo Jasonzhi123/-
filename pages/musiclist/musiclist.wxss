@@ -1,0 +1,28 @@
+.musiclist-item{
+  display: flex;
+margin: 0rpx 40rpx;
+padding: 20rpx 0rpx;
+}
+.musiclist-item-left{
+  width: 100rpx;
+  height: 100rpx;
+
+}
+.musiclist-item-left image{
+width: 80rpx;
+height: 80rpx;
+}
+.musiclist-item-right{
+width: calc(100% - 100rpx);
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.song-name{
+  font-size: 32rpx;
+  /* line-height: 80rpx; */
+
+}
+.songer-name{
+  font-size: 28rpx;
+}

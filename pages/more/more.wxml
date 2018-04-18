@@ -7,40 +7,40 @@
     </view>
   </view>
 
-  <!-- <view class='nav'>
+    <view class='nav'>
     <block>
-      <view class='nav-item'>
+      <view class='nav-item' bindtap='openLikeMusic'>
         <view>
-          <image src='../../images/collection-on.png'></image>
+          <image src='../../images/like.png'></image>
         </view>
-        <view>盛和塾分享</view>
+        <view class='nav-item-title'>喜欢·歌单</view>
       </view>
       <view class='nav-item'>
         <view>
-          <image src='../../images/collection-on.png'></image>
+          <image src='../../images/lately.png'></image>
         </view>
-        <view>为翼分享</view>
+        <view class='nav-item-title'>最近·播放</view>
       </view>
-      <view class='nav-item'>
+      <!-- <view class='nav-item'>
         <view>
           <image src='../../images/collection-on.png'></image>
         </view>
         <view>盛和商城 </view>
-      </view>
+      </view> -->
     </block>
-  </view> -->
-  <view class='per-info'>
+  </view>  
+   <view class='per-info'>
     <view class='per-info-item'>
       <view class='item-image'>
         <image src='../../images/collection-on.png'></image>
       </view>
-      <view class='item-title'>最近播放</view>
+      <view class='item-title'>盛和塾读书会</view>
     </view>
     <view class='per-info-item'>
       <view class='item-image'>
         <image src='../../images/collection-on.png'></image>
       </view>
-      <view class='item-title'>收藏歌单</view>
+      <view class='item-title'>为翼分享</view>
     </view>
-  </view>
+  </view> 
 </view>

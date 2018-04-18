@@ -63,6 +63,7 @@ Page({
     this.data.timer = setInterval(function () {
       wx.getBackgroundAudioPlayerState({
         success: function (res) {
+          // console.log(res)
           that.setData({
             currentPosition: res.currentPosition, //当前时间
             duration: res.duration, //总时间
@@ -171,12 +172,20 @@ Page({
   autoplaymusic() {
     var that = this;
     var songmid = this.data.songlist.songmid;
+    var strMediaMid = this.data.songlist.strMediaMid;
     console.log(this.data.songlist)
     wx.setStorageSync("songmid", songmid)
     if (this.data.imgpath == false) {
-      wx.playBackgroundAudio({
-        dataUrl: 'http://ws.stream.qqmusic.qq.com/C100' + songmid + '.m4a?fromtag=38'
-      })
+      if (strMediaMid) {
+        console.log('strMediaMid')
+        wx.playBackgroundAudio({
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + strMediaMid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+        })
+      } else {
+        wx.playBackgroundAudio({
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+        })
+      }
     } else {
       wx.pauseBackgroundAudio()
     }
@@ -349,7 +358,7 @@ Page({
   },
   /**
    * 删除当前歌曲
-   * */ 
+   * */
   clearSongItem: function (e) {
     var index = e.currentTarget.dataset.index;
     var columnSonglist = this.data.columnSonglist;

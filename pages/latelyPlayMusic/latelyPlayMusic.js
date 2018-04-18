@@ -21,9 +21,9 @@ Page({
     var songlist = app.globalData.songlist;    //歌曲信息
     console.log(songlist)
     var selectedIndex = options.index;           //歌曲排序号
-    var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [] ;
+    var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
     console.log(latelyPlayMusicList)
-    this.setData({ shuffle,latelyPlayMusicList })
+    this.setData({ shuffle, latelyPlayMusicList })
     // 获取最近播放歌曲列表
     if (latelyPlayMusicList) {
       // common.toplist_detailed(columnNumber, function (data) {
@@ -56,7 +56,7 @@ Page({
     });
 
     // 播放音乐
-    // this.autoplaymusic()
+    this.autoplaymusic()
 
     // 播放时长
     clearInterval(that.data.timer)
@@ -171,12 +171,22 @@ Page({
   autoplaymusic() {
     var that = this;
     var songmid = this.data.songlist.songmid;
+    var strMediaMid = this.data.songlist.strMediaMid;
+    console.log(strMediaMid)
     console.log(this.data.songlist)
     wx.setStorageSync("songmid", songmid)
+    wx.setStorageSync("strMediaMid", strMediaMid)
     if (this.data.imgpath == false) {
-      wx.playBackgroundAudio({
-        dataUrl: 'http://ws.stream.qqmusic.qq.com/C100' + songmid + '.m4a?fromtag=38'
-      })
+      if (strMediaMid) {
+        wx.playBackgroundAudio({
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + strMediaMid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+          
+        })
+      } else {
+        wx.playBackgroundAudio({
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+        })
+      }
     } else {
       wx.pauseBackgroundAudio()
     }
