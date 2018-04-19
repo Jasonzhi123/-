@@ -229,11 +229,52 @@ function hotSong() {
       // }
     }
   })
+};
+
+/**
+ * vkey
+ * */
+function vkey(songmid,filename,callback) {
+  console.log(filename)
+  console.log(songmid)
+  wx.request({
+    url: 'https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg',
+    data: {
+      g_tk: 195219765,
+      jsonpCallback: 'MusicJsonCallback004680169373158849',
+      loginUin: '', //可以传空值  
+      hostUin: 0,
+      format: 'json',
+      inCharset: 'utf - 8',
+      outCharset: 'utf - 8',
+      notice: 0,
+      platform: 'yqq',
+      needNewCode: 0,
+      cid: 205361747,
+      // callback: 'MusicJsonCallback004680169373158849',
+      uin:0, //可以传空值  
+      songmid: songmid,
+      filename: filename,
+      guid: 9918820956,
+    },
+    method: "GET",
+    header: {
+      'content-type': 'application/json'
+    },
+    success: function (res) {
+      console.log(res.data)
+      var data = res.data;
+      var vkey = data.data.items[0].vkey
+      callback(vkey);
+      
+    }
+  })
 }
 
 module.exports = {
   slider: slider,
   topList: topList,
+  vkey: vkey,
   search: search,
   toplist_detailed: toplist_detailed,
   getLyric: getLyric,

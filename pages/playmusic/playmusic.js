@@ -22,7 +22,19 @@ Page({
     var columnNumber = options.columnNumber;  //栏目序号
     var that = this;
     var songlist = app.globalData.songlist;    //歌曲信息
+    var songmid = songlist.songmid;
     var selectedIndex = options.index;           //歌曲排序号
+    console.log(songlist)
+    var filename = 'C400' + songmid +'.m4a'
+    common.vkey(songmid,filename,function (data) {
+      var vkey = data;
+      console.log(vkey)
+      that.setData({
+        vkey
+      })
+      // 播放音乐
+      that.autoplaymusic()
+    })
 
     // 获取栏目歌曲列表
     if (columnNumber) {
@@ -55,8 +67,7 @@ Page({
       imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
     });
 
-    // 播放音乐
-    this.autoplaymusic()
+
 
     // 播放时长
     clearInterval(that.data.timer)
@@ -173,17 +184,18 @@ Page({
     var that = this;
     var songmid = this.data.songlist.songmid;
     var strMediaMid = this.data.songlist.strMediaMid;
+    var vkey = this.data.vkey;
+    console.log(vkey)
     console.log(this.data.songlist)
     wx.setStorageSync("songmid", songmid)
     if (this.data.imgpath == false) {
       if (strMediaMid) {
-        console.log('strMediaMid')
         wx.playBackgroundAudio({
-          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + strMediaMid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + strMediaMid + '.m4a?guid=9918820956&vkey=' + vkey +'&uin=0&fromtag=38'
         })
       } else {
         wx.playBackgroundAudio({
-          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=2462755174&vkey=5BB891EDA9A13817C8BCBFFC25A9C7350650924E745965FD5E0B0B303364EB594C3C28BF7969FC96A9001A73BBA6EB847E63A3BB3F4BB7F0&uin=0&fromtag=38'
         })
       }
     } else {
