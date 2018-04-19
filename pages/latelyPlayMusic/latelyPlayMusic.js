@@ -55,8 +55,18 @@ Page({
       imgPath: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songlist.albummid + '.jpg'
     });
 
-    // 播放音乐
-    this.autoplaymusic()
+    //
+    var songmid = songlist.songmid;
+    var filename = 'C400' + songmid + '.m4a'
+    common.vkey(songmid, filename, function (data) {
+      var vkey = data;
+      that.setData({
+        vkey
+      })
+      // 播放音乐
+      that.autoplaymusic()
+    })
+    // this.autoplaymusic()
 
     // 播放时长
     clearInterval(that.data.timer)
@@ -171,20 +181,18 @@ Page({
   autoplaymusic() {
     var that = this;
     var songmid = this.data.songlist.songmid;
+    var vkey = this.data.vkey
     var strMediaMid = this.data.songlist.strMediaMid;
-    console.log(strMediaMid)
-    console.log(this.data.songlist)
     wx.setStorageSync("songmid", songmid)
     wx.setStorageSync("strMediaMid", strMediaMid)
     if (this.data.imgpath == false) {
       if (strMediaMid) {
         wx.playBackgroundAudio({
-          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + strMediaMid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
-          
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + strMediaMid + '.m4a?guid=9918820956&vkey=' + vkey + '&uin=0&fromtag=38'
         })
       } else {
         wx.playBackgroundAudio({
-          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=2462755174&vkey=891F5BBDD23F53B4A4EB69CA8D4A5A4ABDD3F963F176E1A48916571A75BAB647387EFEA21690EED229EC114697219D176B8265818802AE84&uin=0&fromtag=38'
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=9918820956&vkey=' + vkey + '&uin=0&fromtag=38'
         })
       }
     } else {

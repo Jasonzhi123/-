@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     // var latelyPlayMusicList = options.latelyPlayMusicList
     // if (latelyPlayMusicList){
-      var musicList = wx.getStorageSync('latelyPlayMusicList')
+    var musicList = wx.getStorageSync('collectionList')
     // }
       console.log(musicList)
     this.setData({
@@ -27,6 +27,7 @@ Page({
  * 打开搜索的音乐
  * */
   openmusic: function (ev) {
+    var musicList = this.data.musicList;
     var index = ev.currentTarget.dataset.index;
     console.log(index)
     app.globalData.songlist = this.data.musicList[index];
@@ -35,15 +36,16 @@ Page({
     var songid = this.data.musicList[index].songid;
     // 将音乐设置为最近播放
     var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
-    if (latelyPlayMusicList) {
+    if (latelyPlayMusicList.length >0) {
+      console.log(234)
       for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
         if (latelyPlayMusicList[i].songid == songid) {
-          console.log(211111111345423454)
-          console.log(latelyPlayMusicList)
           latelyPlayMusicList.splice(i, 1)
+          break
         }
       }
     }
+
     latelyPlayMusicList.unshift(this.data.musicList[index])
 
     wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)

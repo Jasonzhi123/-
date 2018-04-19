@@ -109,20 +109,25 @@ function toplist_detailed(id, callback) {
 /**
  * 歌词
  * */
-function getLyric(id, callback) {
+function getLyric(songmid, callback) {
   wx.request({
-    url: 'https://route.showapi.com/213-2',
+    url: 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg',
     data: {
-      musicid: id,
-      showapi_appid: '23654',
-      showapi_timestamp: new Date().getTime(),
-      showapi_sign: 'd23793312daf46ad88a06294772b7aac'
+      songmid: songmid,
+      pcachetime: +new Date(),
+      platform: 'yqq',
+      hostUin: 0,
+      needNewCode: 0,
+      g_tk: 5381,
+      format: 'json'
     },
+    method: "GET",
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/json'
     },
     success: function (res) {
       if (res.statusCode == 200) {
+        console.log(res)
         callback(res.data);
       }
     }

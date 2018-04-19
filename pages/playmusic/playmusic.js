@@ -24,7 +24,7 @@ Page({
     var songlist = app.globalData.songlist;    //歌曲信息
     var songmid = songlist.songmid;
     var selectedIndex = options.index;           //歌曲排序号
-    console.log(songlist)
+
     var filename = 'C400' + songmid +'.m4a'
     common.vkey(songmid,filename,function (data) {
       var vkey = data;
@@ -35,7 +35,10 @@ Page({
       // 播放音乐
       that.autoplaymusic()
     })
-
+    common.getLyric(songmid, function (data) {
+   
+    })
+    
     // 获取栏目歌曲列表
     if (columnNumber) {
       common.toplist_detailed(columnNumber, function (data) {
@@ -185,8 +188,6 @@ Page({
     var songmid = this.data.songlist.songmid;
     var strMediaMid = this.data.songlist.strMediaMid;
     var vkey = this.data.vkey;
-    console.log(vkey)
-    console.log(this.data.songlist)
     wx.setStorageSync("songmid", songmid)
     if (this.data.imgpath == false) {
       if (strMediaMid) {
@@ -195,7 +196,7 @@ Page({
         })
       } else {
         wx.playBackgroundAudio({
-          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=2462755174&vkey=5BB891EDA9A13817C8BCBFFC25A9C7350650924E745965FD5E0B0B303364EB594C3C28BF7969FC96A9001A73BBA6EB847E63A3BB3F4BB7F0&uin=0&fromtag=38'
+          dataUrl: 'http://dl.stream.qqmusic.qq.com/C400' + songmid + '.m4a?guid=9918820956&vkey=' + vkey + '&uin=0&fromtag=38'
         })
       }
     } else {

@@ -44,7 +44,7 @@ Page({
     common.search(function (data) {
       console.log(data)
       that.setData({
-        search: data.data.hotkey.slice(11, 19),
+        search: data.data.hotkey.slice(3, 12),
         searchTitle: data.data.special_key
       })
     });
