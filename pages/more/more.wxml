@@ -9,13 +9,13 @@
 
     <view class='nav'>
     <block>
-      <view class='nav-item' bindtap='openLikeMusic'>
+      <view class='nav-item'  data-dataitem='collectionList' bindtap='openLikeMusic'>
         <view>
           <image src='../../images/like.png'></image>
         </view>
         <view class='nav-item-title'>喜欢·歌单</view>
       </view>
-      <view class='nav-item'>
+      <view class='nav-item' data-dataitem='latelyPlayMusicList' bindtap='openLikeMusic'>
         <view>
           <image src='../../images/lately.png'></image>
         </view>
@@ -32,13 +32,13 @@
    <view class='per-info'>
     <view class='per-info-item'>
       <view class='item-image'>
-        <image src='../../images/collection-on.png'></image>
+        <image src='../../images/like.png'></image>
       </view>
       <view class='item-title'>盛和塾读书会</view>
     </view>
     <view class='per-info-item'>
       <view class='item-image'>
-        <image src='../../images/collection-on.png'></image>
+        <image src='../../images/like.png'></image>
       </view>
       <view class='item-title'>为翼分享</view>
     </view>

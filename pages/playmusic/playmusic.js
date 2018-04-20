@@ -35,6 +35,7 @@ Page({
       // 播放音乐
       that.autoplaymusic()
     })
+
     common.getLyric(songmid, function (data) {
    
     })
@@ -141,6 +142,27 @@ Page({
       })
     })
 
+    wx.onBackgroundAudioPlay(function(){
+      console.log('音乐播放')
+      var songlist =that.data.songlist
+      var songid = songlist.songid
+      // 将音乐设置为最近播放
+      var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
+      if (latelyPlayMusicList.length > 0) {
+        for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
+          if (latelyPlayMusicList[i].songid == songid) {
+            latelyPlayMusicList.splice(i, 1)
+            break
+          }
+        }
+      }
+      if (latelyPlayMusicList.length >= 50) {
+        latelyPlayMusicList.pop();
+      }
+      // 追加数据
+      latelyPlayMusicList.unshift(songlist)
+      wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)
+    })
     // 设置导航栏
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
@@ -151,6 +173,8 @@ Page({
       }
     })
     this.isCollection();  //判断是否已收藏
+
+
   },
   /**
    * 判断是否收藏
@@ -258,6 +282,7 @@ Page({
       }
     })
   },
+  
   /**
    * 播放的顺序
    * */
@@ -286,6 +311,7 @@ Page({
       duration: 2000
     })
   },
+
   /**
    * 控制歌曲上下一首
    * */

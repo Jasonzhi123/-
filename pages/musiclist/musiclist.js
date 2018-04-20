@@ -13,11 +13,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // var latelyPlayMusicList = options.latelyPlayMusicList
-    // if (latelyPlayMusicList){
+    var latelyPlayMusicList = options.latelyPlayMusicList
+    var collectionList = options.collectionList
+    if (collectionList){
     var musicList = wx.getStorageSync('collectionList')
-    // }
-      console.log(musicList)
+    }
+    if (latelyPlayMusicList) {
+      var musicList = wx.getStorageSync('latelyPlayMusicList')
+    }
     this.setData({
       musicList
     })
@@ -45,9 +48,8 @@ Page({
         }
       }
     }
-
+// 追加数据
     latelyPlayMusicList.unshift(this.data.musicList[index])
-
     wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)
     wx.navigateTo({
       url: '../latelyPlayMusic/latelyPlayMusic'

@@ -66,7 +66,27 @@ Page({
       // 播放音乐
       that.autoplaymusic()
     })
-    // this.autoplaymusic()
+    wx.onBackgroundAudioPlay(function(){
+      console.log('音乐播放')
+      var songlist =that.data.songlist
+      var songid = songlist.songid
+      // 将音乐设置为最近播放
+      var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
+      if (latelyPlayMusicList.length > 0) {
+        for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
+          if (latelyPlayMusicList[i].songid == songid) {
+            latelyPlayMusicList.splice(i, 1)
+            break
+          }
+        }
+      }
+      if (latelyPlayMusicList.length >= 50) {
+        latelyPlayMusicList.pop();
+      }
+      // 追加数据
+      latelyPlayMusicList.unshift(songlist)
+      wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)
+    })
 
     // 播放时长
     clearInterval(that.data.timer)
@@ -135,7 +155,27 @@ Page({
         title: '歌曲：' + songlist.albumname
       })
     })
-
+    wx.onBackgroundAudioPlay(function () {
+      console.log('音乐播放')
+      var songlist = that.data.songlist
+      var songid = songlist.songid
+      // 将音乐设置为最近播放
+      var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
+      if (latelyPlayMusicList.length > 0) {
+        for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
+          if (latelyPlayMusicList[i].songid == songid) {
+            latelyPlayMusicList.splice(i, 1)
+            break
+          }
+        }
+      }
+      if (latelyPlayMusicList.length >= 50) {
+        latelyPlayMusicList.pop();
+      }
+      // 追加数据
+      latelyPlayMusicList.unshift(songlist)
+      wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)
+    })
     // 设置导航栏
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
@@ -320,6 +360,7 @@ Page({
       title: '歌曲：' + songlist.albumname
     })
   },
+  
   /**
    * 收藏歌曲
    * */
@@ -362,19 +403,16 @@ Page({
         }
       }
     }
-    // console.log(collectionList)
-
   },
   /**
    * 删除当前歌曲
    * */
   clearSongItem: function (e) {
     var index = e.currentTarget.dataset.index;
-    var columnSonglist = this.data.columnSonglist;
-    columnSonglist.splice(index, 1)
+    var latelyPlayMusicList = this.data.latelyPlayMusicList;
+    latelyPlayMusicList.splice(index, 1)
     this.setData({
-      columnSonglist
+      latelyPlayMusicList
     })
   }
-
 })

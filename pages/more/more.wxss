@@ -53,12 +53,12 @@
   border-bottom: 1px dashed #aaa;
 }
 .item-image,item-image image{
-  width: 100rpx;
-  height: 100rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 .item-image image{
-  width: 100rpx;
-  height: 100rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 .item-title{
   height: 100rpx;

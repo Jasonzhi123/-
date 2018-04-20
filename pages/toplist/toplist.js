@@ -62,6 +62,24 @@ Page({
     var index = ev.currentTarget.dataset.play;  //获取ID
     console.log(index)
     app.globalData.songlist = this.data.songlist[index].data //把数据保存在APP中
+    var songlist = this.data.songlist[index].data
+    var songid=songlist.songid
+    // 将音乐设置为最近播放
+    var latelyPlayMusicList = wx.getStorageSync('latelyPlayMusicList') || [];
+    if (latelyPlayMusicList.length > 0) {
+      for (var i = 0, len = latelyPlayMusicList.length; i < len; i++) {
+        if (latelyPlayMusicList[i].songid == songid) {
+          latelyPlayMusicList.splice(i, 1)
+          break
+        }
+      }
+    }
+    // 追加数据
+    latelyPlayMusicList.unshift(songlist)
+    if (latelyPlayMusicList.length >= 50) {
+      latelyPlayMusicList.pop();
+    }
+    wx.setStorageSync('latelyPlayMusicList', latelyPlayMusicList)
     wx.navigateTo({
       url: '../playmusic/playmusic?columnNumber=' + columnNumber +'&index='+index
     })

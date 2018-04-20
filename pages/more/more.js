@@ -33,9 +33,19 @@ Page({
   /**
    * 打开喜欢歌曲
    * */
-  openLikeMusic: function () {
-    wx.navigateTo({
-      url: '../musiclist/musiclist?latelyPlayMusicList=' + 'latelyPlayMusicList',
-    })
+  openLikeMusic: function (e) {
+    console.log(e)
+    var dataitem=e.currentTarget.dataset.dataitem
+    if (dataitem == 'collectionList'){
+      wx.navigateTo({
+        url: '../musiclist/musiclist?collectionList=' + 'collectionList',
+      })
+    }
+    if (dataitem == 'latelyPlayMusicList') {
+      wx.navigateTo({
+        url: '../musiclist/musiclist?latelyPlayMusicList=' + 'latelyPlayMusicList',
+      })
+    }
+
   }
 })
