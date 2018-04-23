@@ -233,6 +233,7 @@ Page({
    * 拖拽进度条
   */
   movebar: function (ev) {
+    console.log(ev)
     var that = this;
     var X = ev.touches[0].clientX - ev.currentTarget.offsetLeft;
     var elewidth = this.data.windowWidth - ev.currentTarget.offsetLeft * 2
