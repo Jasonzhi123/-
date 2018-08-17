@@ -37,6 +37,7 @@ App({
   getCache: function () {
     return wx.getStorageSync(_this.constant.CACHE);
   },
+  
   globalData: {
     userInfo: null,
     //应用设置
