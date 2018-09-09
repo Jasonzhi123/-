@@ -1,6 +1,5 @@
 var common = require("../../data/data.js");
 var app = getApp();
-console.log(app)
 Page({
 
   /**
